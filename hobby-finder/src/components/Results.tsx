@@ -32,6 +32,7 @@ export default function Results() {
   const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [locationError, setLocationError] = useState<string | null>(null);
   const shareCardRef = useRef<HTMLDivElement>(null);
+  const quizSentRef = useRef(false);
   const [shareInProgress, setShareInProgress] = useState(false);
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [email, setEmail] = useState('');
@@ -67,6 +68,48 @@ export default function Results() {
   }).filter(d => d.title);
 
   const top3ForShare = recommendations.slice(0, 3);
+
+  // Отправка данных квиза на второй лист Google Таблицы (один раз при открытии результатов)
+  useEffect(() => {
+    if (!sheetsUrl || recommendations.length === 0 || quizSentRef.current) return;
+    quizSentRef.current = true;
+    const oceanIds = (testConfig.questions.ocean as { id: string }[]).map((q) => q.id);
+    const hobbyIds = (testConfig.questions.hobby as { id: string }[]).map((q) => q.id);
+    const visualIds = (testConfig.questions.visual as { id: string }[]).map((q) => q.id);
+    const getAnswer = (id: string) => answers.find((a) => a.questionId === id)?.value ?? '';
+    const visualToNum = (v: string) => ({ a: 1, b: 2, c: 3, d: 4 }[v] ?? v);
+
+    const answerValues: (string | number)[] = [];
+    oceanIds.forEach((id) => answerValues.push(getAnswer(id) || ''));
+    hobbyIds.forEach((id) => answerValues.push(getAnswer(id) || ''));
+    visualIds.forEach((id) => answerValues.push(visualToNum(getAnswer(id)) || ''));
+    answerValues.push(context.time || '', context.budget || '');
+
+    const payload = {
+      type: 'quiz',
+      locale,
+      answers: answerValues,
+      ocean_O: scores.ocean.O,
+      ocean_C: scores.ocean.C,
+      ocean_E: scores.ocean.E,
+      ocean_A: scores.ocean.A,
+      ocean_N: scores.ocean.N,
+      riasec_R: scores.riasec.R,
+      riasec_I: scores.riasec.I,
+      riasec_Art: scores.riasec.Art,
+      riasec_S: scores.riasec.S,
+      riasec_Ent: scores.riasec.Ent,
+      riasec_Con: scores.riasec.Con,
+      hobby1: recommendations[0]?.hobby.name[locale] ?? '',
+      hobby2: recommendations[1]?.hobby.name[locale] ?? '',
+      hobby3: recommendations[2]?.hobby.name[locale] ?? '',
+      hobby4: recommendations[3]?.hobby.name[locale] ?? '',
+      hobby5: recommendations[4]?.hobby.name[locale] ?? '',
+      createdAt: new Date().toISOString(),
+    };
+    const body = new URLSearchParams({ type: 'quiz', payload: JSON.stringify(payload) });
+    fetch(sheetsUrl, { method: 'POST', mode: 'no-cors', body }).catch(() => {});
+  }, [sheetsUrl, recommendations, locale, answers, context, scores]);
 
   async function handleShare() {
     if (!shareCardRef.current || top3ForShare.length === 0) return;
@@ -131,7 +174,7 @@ export default function Results() {
   // URL подставляется при сборке из секрета GOOGLE_SHEETS_WEBHOOK_URL; fallback для Pages, если секрет не задан
   const sheetsUrl =
     process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL ||
-    'https://script.google.com/macros/s/AKfycbyQCXawOqr0OAN7-eQgHQPK-MId0HsJOzGRAAYhXOOQXFWhJ4dkwBr1OxnNHIBGiX7J/exec';
+    'https://script.google.com/macros/s/AKfycbzDxYXeLXpcXHN-4N4fziJE6jeHnTPc4_vLGtsalW6zjjmKEfGR3ORDnehn2SwsRH_2/exec';
 
   async function handleEmailSubmit(e: React.FormEvent) {
     e.preventDefault();
