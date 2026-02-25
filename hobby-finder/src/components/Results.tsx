@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import {
   Radar,
   RadarChart,
@@ -15,6 +15,7 @@ import hobbiesData from '@/data/hobbies.json';
 import resultsData from '@/data/results.json';
 import testConfig from '@/data/test-config.json';
 import type { Hobby, OceanTrait } from '@/types';
+import ShareCard from './ShareCard';
 
 const traitOrder: OceanTrait[] = ['O', 'C', 'E', 'A', 'N'];
 // Axis ticks for labels (2,4,6,8,10)
@@ -30,6 +31,8 @@ export default function Results() {
   const [showMap, setShowMap] = useState(false);
   const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [locationError, setLocationError] = useState<string | null>(null);
+  const shareCardRef = useRef<HTMLDivElement>(null);
+  const [shareInProgress, setShareInProgress] = useState(false);
 
   // Get recommended hobbies
   const hobbies = hobbiesData.hobbies as Hobby[];
@@ -58,6 +61,67 @@ export default function Results() {
     return { trait, traitName, level, value, ...traitData };
   }).filter(d => d.title);
 
+  const top3ForShare = recommendations.slice(0, 3);
+
+  async function handleShare() {
+    if (!shareCardRef.current || top3ForShare.length === 0) return;
+    setShareInProgress(true);
+    try {
+      await new Promise((r) => setTimeout(r, 100));
+      if (!shareCardRef.current) {
+        setShareInProgress(false);
+        return;
+      }
+      const { default: html2canvas } = await import('html2canvas');
+      const canvas = await html2canvas(shareCardRef.current, {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: null,
+      });
+      canvas.toBlob(async (blob) => {
+        if (!blob) {
+          setShareInProgress(false);
+          return;
+        }
+        const file = new File([blob], 'my-hobby-results.png', { type: 'image/png' });
+        const shareText = `${ui.shareCardTitle?.[locale] ?? 'Such hobbies suit me'}: ${top3ForShare.map((r) => r.hobby.name[locale]).join(', ')}`;
+        const url = window.location.href;
+        if (navigator.share && navigator.canShare?.({ files: [file] })) {
+          try {
+            await navigator.share({
+              title: 'My Hobby Test Results',
+              text: shareText,
+              url,
+              files: [file],
+            });
+          } catch (e) {
+            if ((e as Error).name !== 'AbortError') {
+              fallbackShare(file, shareText, url);
+            }
+          }
+        } else {
+          fallbackShare(file, shareText, url);
+        }
+        setShareInProgress(false);
+      }, 'image/png');
+    } catch (e) {
+      console.error(e);
+      setShareInProgress(false);
+    }
+  }
+
+  function fallbackShare(file: File, text: string, url: string) {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(file);
+    a.download = file.name;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(`${text}\n${url}`);
+    }
+  }
+
   // Save results to database (skipped on static host, e.g. GitHub Pages)
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_DISABLE_SAVE === 'true') return;
@@ -79,6 +143,26 @@ export default function Results() {
 
   return (
     <div className="min-h-screen p-6" style={{ background: 'var(--bg-primary)' }}>
+      {/* Off-screen card for share image capture */}
+      <div
+        ref={shareCardRef}
+        className="absolute top-0 w-[800px] h-[500px]"
+        style={{ left: -9999, overflow: 'hidden' }}
+        aria-hidden
+      >
+        <ShareCard
+          shareCardTitle={ui.shareCardTitle?.[locale] ?? 'Such hobbies suit me'}
+          shareCardTop3Label={ui.shareCardTop3?.[locale] ?? 'Top 3'}
+          riasecData={riasecData}
+          top3={top3ForShare}
+          locale={locale}
+          backgroundColor="var(--bg-secondary)"
+          textColor="var(--text-primary)"
+          borderColor="var(--border)"
+          accentColor="#7ba88a"
+        />
+      </div>
+
       <div className="max-w-5xl mx-auto space-y-10">
         {/* Header */}
         <div className="text-center space-y-2">
@@ -232,20 +316,15 @@ export default function Results() {
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
           <button
-            onClick={() => {
-              if (navigator.share) {
-                navigator.share({
-                  title: 'My Hobby Test Results',
-                  text: `I found my perfect hobbies! Top match: ${recommendations[0]?.hobby.name[locale]}`,
-                  url: window.location.href,
-                });
-              }
-            }}
-            className="group relative px-8 py-4 font-semibold rounded-2xl transition-all duration-300 overflow-hidden"
+            onClick={handleShare}
+            disabled={shareInProgress}
+            className="group relative px-8 py-4 font-semibold rounded-2xl transition-all duration-300 overflow-hidden disabled:opacity-70"
             style={{ background: 'var(--accent-primary)', color: 'white' }}
           >
             <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity" />
-            <span className="relative">{ui.share[locale]}</span>
+            <span className="relative">
+              {shareInProgress ? (locale === 'ru' ? 'Готовим…' : locale === 'fr' ? 'Préparation…' : 'Preparing…') : ui.share[locale]}
+            </span>
           </button>
           <button
             onClick={resetTest}

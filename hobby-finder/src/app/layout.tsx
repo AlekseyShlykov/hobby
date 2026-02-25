@@ -3,13 +3,18 @@ import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const canonicalBase = basePath ? `${siteUrl}${basePath}` : siteUrl;
+// For metadata (og:image etc.) we need absolute URLs. metadataBase must be the origin
+// so that paths like /repo/images/... resolve correctly on GitHub Pages.
+const metadataBaseUrl = new URL(siteUrl);
+const sharingImagePath = basePath
+  ? `${basePath}/images/hero-hobbies.png`
+  : "/images/hero-hobbies.png";
 
 export const metadata: Metadata = {
   title: "Hobby Finder - Find Your Perfect Hobby",
   description:
     "Take a 5-minute personality test and discover hobbies that match who you are",
-  metadataBase: new URL(canonicalBase),
+  metadataBase: metadataBaseUrl,
   openGraph: {
     title: "Hobby Finder - Find Your Perfect Hobby",
     description:
@@ -17,7 +22,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/hero-hobbies.png",
+        url: sharingImagePath,
         width: 800,
         height: 500,
         alt: "Hobby Finder — find your perfect hobby",
@@ -29,7 +34,7 @@ export const metadata: Metadata = {
     title: "Hobby Finder - Find Your Perfect Hobby",
     description:
       "Take a 5-minute personality test and discover hobbies that match who you are",
-    images: ["/images/hero-hobbies.png"],
+    images: [sharingImagePath],
   },
 };
 

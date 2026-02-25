@@ -151,6 +151,8 @@
       "hobbies": { "en": "Recommended Hobbies", "ru": "Рекомендованные хобби", "fr": "Hobbies recommandés" },
       "whyFits": { "en": "Why it fits you", "ru": "Почему подходит", "fr": "Pourquoi ça vous convient" },
       "share": { "en": "Share", "ru": "Поделиться", "fr": "Partager" },
+      "shareCardTitle": { "en": "Such hobbies suit me", "ru": "Такие хобби подходят мне", "fr": "Ces loisirs me correspondent" },
+      "shareCardTop3": { "en": "Top 3", "ru": "Топ 3", "fr": "Top 3" },
       "retake": { "en": "Retake Test", "ru": "Пройти заново", "fr": "Refaire le test" },
       "findNearby": { "en": "Find These Hobbies Near Me", "ru": "Найти эти хобби рядом", "fr": "Trouver ces hobbies près de moi" },
       "loadingLocation": { "en": "Getting your location...", "ru": "Определяем местоположение...", "fr": "Localisation en cours..." },

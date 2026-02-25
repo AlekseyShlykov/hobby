@@ -24,7 +24,8 @@ jobs:
     env:
       BASE_PATH: /${{ github.event.repository.name }}
       NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
-      NEXT_PUBLIC_SITE_URL: https://${{ github.event.repository.owner.login }}.github.io/${{ github.event.repository.name }}
+      # Origin only so og:image path can be /repo/images/... on GitHub Pages
+      NEXT_PUBLIC_SITE_URL: https://${{ github.event.repository.owner.login }}.github.io
       NEXT_PUBLIC_DISABLE_SAVE: "true"
     steps:
       - name: Checkout
