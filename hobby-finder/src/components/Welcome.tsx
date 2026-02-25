@@ -6,7 +6,7 @@ import LanguageSelector from './LanguageSelector';
 import results from '@/data/results.json';
 
 export default function Welcome() {
-  const { locale, startTest } = useTestStore();
+  const { locale, startTest, totalSteps } = useTestStore();
   const ui = results.ui.welcome;
 
   return (
@@ -55,7 +55,7 @@ export default function Welcome() {
           </button>
           
           <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
-            27 {locale === 'ru' ? 'вопросов' : locale === 'fr' ? 'questions' : 'questions'} • 5-7 min
+            {totalSteps} {locale === 'ru' ? 'вопросов' : locale === 'fr' ? 'questions' : 'questions'} • 5-7 min
           </p>
         </div>
       </div>
