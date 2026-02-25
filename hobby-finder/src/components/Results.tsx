@@ -360,10 +360,10 @@ export default function Results() {
           </div>
         </div>
 
-        {/* Big Five Personality Profile */}
+        {/* OCEAN Personality Profile */}
         <div className="rounded-3xl p-8 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
           <h2 className="text-3xl font-bold mb-8" style={{ color: 'var(--text-primary)' }}>
-            {{ en: 'Your Big Five Personality Profile', ru: 'Твой профиль по Big Five', fr: 'Votre profil Big Five' }[locale]}
+            {{ en: 'Your OCEAN Profile', ru: 'Твой профиль OCEAN', fr: 'Votre profil OCEAN' }[locale]}
           </h2>
           <div className="space-y-8 relative">
             {allOceanDescriptions.map((desc, i) => (
@@ -477,9 +477,12 @@ export default function Results() {
         {/* Newsletter signup form */}
         {(showEmailForm || emailSuccess) && (
           <div className="rounded-3xl p-8 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
-            <h3 className="text-xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
+            <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>
               {ui.newsletterSubscribe?.[locale]}
             </h3>
+            <p className="mb-4 text-base" style={{ color: 'var(--text-secondary)' }}>
+              {ui.newsletterIntro?.[locale]}
+            </p>
             {emailSuccess ? (
               <p className="text-lg" style={{ color: 'var(--success)' }}>
                 {ui.newsletterSuccess?.[locale]}

@@ -157,6 +157,7 @@
       "findNearby": { "en": "Find These Hobbies Near Me", "ru": "Найти эти хобби рядом", "fr": "Trouver ces hobbies près de moi" },
       "getFullResultByEmail": { "en": "Get Full Result by Email", "ru": "Получить полный результат на почту", "fr": "Recevoir le résultat complet par email" },
       "newsletterSubscribe": { "en": "Subscribe to newsletter for updates", "ru": "Подписаться на рассылку с обновлениями", "fr": "S'abonner à la newsletter pour les mises à jour" },
+      "newsletterIntro": { "en": "Subscribe to receive updates and our newsletter about hobbies.", "ru": "Подпишитесь, чтобы получать обновления и нашу рассылку про хобби.", "fr": "Abonnez-vous pour recevoir les mises à jour et notre newsletter sur les loisirs." },
       "emailPlaceholder": { "en": "Your email", "ru": "Ваша почта", "fr": "Votre email" },
       "emailSend": { "en": "Subscribe", "ru": "Подписаться", "fr": "S'abonner" },
       "emailSuccess": { "en": "Full result sent to your email.", "ru": "Полный результат отправлен на вашу почту.", "fr": "Résultat complet envoyé à votre email." },
