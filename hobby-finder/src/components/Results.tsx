@@ -131,7 +131,7 @@ export default function Results() {
   // URL подставляется при сборке из секрета GOOGLE_SHEETS_WEBHOOK_URL; fallback для Pages, если секрет не задан
   const sheetsUrl =
     process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL ||
-    'https://script.google.com/macros/s/AKfycbzMaPy-szSq71V4ZJ78b2CL_yccN6WswRbVx8MStNwGyctkC-hKgkqhoa80r_m7rt6I/exec';
+    'https://script.google.com/macros/s/AKfycbyQCXawOqr0OAN7-eQgHQPK-MId0HsJOzGRAAYhXOOQXFWhJ4dkwBr1OxnNHIBGiX7J/exec';
 
   async function handleEmailSubmit(e: React.FormEvent) {
     e.preventDefault();
