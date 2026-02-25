@@ -48,27 +48,32 @@ function RadarAxisTick({
   payload,
   x,
   y,
-  textAnchor,
+  textAnchor = 'middle',
 }: {
-  payload: { value: string } | { value: string }[];
-  x: number;
-  y: number;
-  textAnchor: 'start' | 'middle' | 'end';
+  payload: { value?: unknown } | { value?: unknown }[];
+  x: number | string;
+  y: number | string;
+  textAnchor?: string;
 }) {
-  const label = (Array.isArray(payload) ? payload[0]?.value : payload?.value) ?? '';
+  const label = String(
+    Array.isArray(payload) ? payload[0]?.value ?? '' : (payload as { value?: unknown })?.value ?? ''
+  );
   const lines = wrapAxisLabel(label);
   const fontSize = 12;
   const lineHeight = 14;
   const totalHeight = lines.length * lineHeight;
-  const startY = y - totalHeight / 2 + lineHeight / 2;
+  const numX = typeof x === 'string' ? parseFloat(x) : x;
+  const numY = typeof y === 'string' ? parseFloat(y) : y;
+  const startY = numY - totalHeight / 2 + lineHeight / 2;
+  const anchor = (textAnchor === 'start' || textAnchor === 'end' ? textAnchor : 'middle') as 'start' | 'middle' | 'end';
   return (
     <g style={{ overflow: 'visible' }}>
       {lines.map((line, i) => (
         <text
           key={i}
-          x={x}
+          x={numX}
           y={startY + i * lineHeight}
-          textAnchor={textAnchor}
+          textAnchor={anchor}
           fontSize={fontSize}
           fill="var(--text-secondary)"
           style={{ overflow: 'visible' }}
@@ -366,7 +371,7 @@ export default function Results() {
                 <PolarGrid stroke="rgba(107, 95, 122, 0.25)" gridType="circle" polarRadius={gridRadii} />
                 <PolarAngleAxis
                   dataKey="trait"
-                  tick={(props) => <RadarAxisTick {...props} />}
+                  tick={(props) => <RadarAxisTick payload={props.payload} x={props.x} y={props.y} textAnchor={props.textAnchor} />}
                 />
                 <PolarRadiusAxis
                   angle={90}
@@ -398,7 +403,7 @@ export default function Results() {
                 <PolarGrid stroke="rgba(107, 95, 122, 0.25)" gridType="circle" polarRadius={gridRadii} />
                 <PolarAngleAxis
                   dataKey="trait"
-                  tick={(props) => <RadarAxisTick {...props} />}
+                  tick={(props) => <RadarAxisTick payload={props.payload} x={props.x} y={props.y} textAnchor={props.textAnchor} />}
                 />
                 <PolarRadiusAxis
                   angle={90}
