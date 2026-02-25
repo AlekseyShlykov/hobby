@@ -82,13 +82,28 @@ export default function Results() {
     const hobbyIds = (testConfig.questions.hobby as { id: string }[]).map((q) => q.id);
     const visualIds = (testConfig.questions.visual as { id: string }[]).map((q) => q.id);
     const getAnswer = (id: string) => answers.find((a) => a.questionId === id)?.value ?? '';
-    const visualToNum = (v: string) => ({ a: 1, b: 2, c: 3, d: 4 }[v] ?? v);
+    // Визуальные: верх-лев=1, верх-прав=2, низ-лев=3, низ-прав=4 (options a,b,c,d по порядку в grid)
+    const visualToNum = (v: string) => ({ a: 1, b: 2, c: 3, d: 4 }[v] ?? '');
+    // Время: 1–2ч=1, 2–5ч=2, 5–10ч=3, много=4 (value: low, medium, high, unlimited)
+    const timeToNum: Record<string, number> = { low: 1, medium: 2, high: 3, unlimited: 4 };
+    // Бюджет: бесплатно=1, мало=2, средне=3, много=4 (value: free, small, medium, high)
+    const budgetToNum: Record<string, number> = { free: 1, small: 2, medium: 3, high: 4 };
 
     const answerValues: (string | number)[] = [];
-    oceanIds.forEach((id) => answerValues.push(getAnswer(id) || ''));
-    hobbyIds.forEach((id) => answerValues.push(getAnswer(id) || ''));
+    // OCEAN + hobby: 1–5 (полностью не согласен=1 … полностью согласен=5)
+    oceanIds.forEach((id) => {
+      const v = getAnswer(id);
+      answerValues.push(v ? Number(v) : '');
+    });
+    hobbyIds.forEach((id) => {
+      const v = getAnswer(id);
+      answerValues.push(v ? Number(v) : '');
+    });
     visualIds.forEach((id) => answerValues.push(visualToNum(getAnswer(id)) || ''));
-    answerValues.push(context.time || '', context.budget || '');
+    answerValues.push(
+      context.time ? timeToNum[context.time] ?? '' : '',
+      context.budget ? budgetToNum[context.budget] ?? '' : ''
+    );
 
     const payload = {
       type: 'quiz',
