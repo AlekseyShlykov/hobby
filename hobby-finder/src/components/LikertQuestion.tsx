@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTestStore } from '@/lib/store';
 import ProgressBar from './ProgressBar';
+import PlaceholderImage from './PlaceholderImage';
 import type { LikertQuestion as LikertQuestionType } from '@/types';
 
 interface Props {
@@ -66,6 +67,16 @@ export default function LikertQuestion({ question }: Props) {
         <ProgressBar />
 
         <div className="space-y-6 sm:space-y-8">
+          {question.image && (
+            <div className="w-full rounded-2xl overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
+              <PlaceholderImage
+                name={question.image}
+                width={800}
+                height={400}
+                className="w-full"
+              />
+            </div>
+          )}
           {/* Question text – readable line length, responsive size */}
           <h2
             className="text-lg sm:text-xl md:text-2xl font-semibold text-center leading-snug sm:leading-relaxed px-1"
