@@ -69,6 +69,11 @@ export default function Results() {
 
   const top3ForShare = recommendations.slice(0, 3);
 
+  // URL подставляется при сборке из секрета GOOGLE_SHEETS_WEBHOOK_URL; fallback для Pages
+  const sheetsUrl =
+    process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL ||
+    'https://script.google.com/macros/s/AKfycbzDxYXeLXpcXHN-4N4fziJE6jeHnTPc4_vLGtsalW6zjjmKEfGR3ORDnehn2SwsRH_2/exec';
+
   // Отправка данных квиза на второй лист Google Таблицы (один раз при открытии результатов)
   useEffect(() => {
     if (!sheetsUrl || recommendations.length === 0 || quizSentRef.current) return;
@@ -171,10 +176,6 @@ export default function Results() {
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  // URL подставляется при сборке из секрета GOOGLE_SHEETS_WEBHOOK_URL; fallback для Pages, если секрет не задан
-  const sheetsUrl =
-    process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL ||
-    'https://script.google.com/macros/s/AKfycbzDxYXeLXpcXHN-4N4fziJE6jeHnTPc4_vLGtsalW6zjjmKEfGR3ORDnehn2SwsRH_2/exec';
 
   async function handleEmailSubmit(e: React.FormEvent) {
     e.preventDefault();
