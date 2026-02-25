@@ -1,0 +1,284 @@
+{
+  "hobbies": [
+    {
+      "id": "woodworking",
+      "name": { "en": "Woodworking", "ru": "Столярное дело", "fr": "Menuiserie" },
+      "riasec": { "R": 0.9, "I": 0.4, "Art": 0.5, "S": 0.1, "Ent": 0.1, "Con": 0.3 },
+      "oceanBoost": { "C": 0.6, "O": 0.3 },
+      "time": ["medium", "high", "unlimited"],
+      "budget": ["small", "medium", "high"],
+      "activity": "low",
+      "description": {
+        "en": "Create furniture, decorations, and functional items from wood. A meditative craft with tangible results.",
+        "ru": "Создание мебели, декора и полезных предметов из дерева. Медитативное ремесло с осязаемым результатом.",
+        "fr": "Créez des meubles et objets en bois. Un artisanat méditatif avec des résultats tangibles."
+      }
+    },
+    {
+      "id": "gardening",
+      "name": { "en": "Gardening", "ru": "Садоводство", "fr": "Jardinage" },
+      "riasec": { "R": 0.8, "I": 0.3, "Art": 0.5, "S": 0.3, "Ent": 0.1, "Con": 0.2 },
+      "oceanBoost": { "A": 0.4, "N": -0.3 },
+      "time": ["medium", "high", "unlimited"],
+      "budget": ["free", "small", "medium"],
+      "activity": "medium",
+      "description": {
+        "en": "Grow plants, vegetables, or flowers. Connect with nature and enjoy the fruits of your labor.",
+        "ru": "Выращивай растения, овощи или цветы. Связь с природой и плоды твоего труда.",
+        "fr": "Cultivez des plantes, légumes ou fleurs. Connectez-vous à la nature."
+      }
+    },
+    {
+      "id": "hiking",
+      "name": { "en": "Hiking", "ru": "Пешие походы", "fr": "Randonnée" },
+      "riasec": { "R": 0.9, "I": 0.2, "Art": 0.2, "S": 0.5, "Ent": 0.3, "Con": 0.1 },
+      "oceanBoost": { "O": 0.4, "E": 0.3 },
+      "time": ["medium", "high", "unlimited"],
+      "budget": ["free", "small"],
+      "activity": "high",
+      "description": {
+        "en": "Explore trails, mountains, and nature on foot. Great for fitness and mental clarity.",
+        "ru": "Исследуй тропы, горы и природу пешком. Отлично для здоровья и ясности ума.",
+        "fr": "Explorez les sentiers et la nature à pied. Excellent pour la forme et l'esprit."
+      }
+    },
+    {
+      "id": "cooking",
+      "name": { "en": "Cooking", "ru": "Кулинария", "fr": "Cuisine" },
+      "riasec": { "R": 0.6, "I": 0.3, "Art": 0.7, "S": 0.5, "Ent": 0.2, "Con": 0.3 },
+      "oceanBoost": { "O": 0.5, "A": 0.3 },
+      "time": ["low", "medium", "high"],
+      "budget": ["small", "medium"],
+      "activity": "low",
+      "description": {
+        "en": "Create delicious meals and explore cuisines from around the world. Share with friends and family.",
+        "ru": "Готовь вкусные блюда и изучай кухни мира. Делись с друзьями и семьёй.",
+        "fr": "Créez des plats délicieux et explorez les cuisines du monde."
+      }
+    },
+    {
+      "id": "programming",
+      "name": { "en": "Programming", "ru": "Программирование", "fr": "Programmation" },
+      "riasec": { "R": 0.2, "I": 0.9, "Art": 0.4, "S": 0.1, "Ent": 0.2, "Con": 0.7 },
+      "oceanBoost": { "O": 0.4, "C": 0.5 },
+      "time": ["medium", "high", "unlimited"],
+      "budget": ["free"],
+      "activity": "low",
+      "description": {
+        "en": "Build apps, websites, or games. Endless puzzles where every solution opens new possibilities.",
+        "ru": "Создавай приложения, сайты или игры. Бесконечные головоломки с новыми возможностями.",
+        "fr": "Créez des applications, sites web ou jeux. Des puzzles infinis."
+      }
+    },
+    {
+      "id": "chess",
+      "name": { "en": "Chess", "ru": "Шахматы", "fr": "Échecs" },
+      "riasec": { "R": 0.1, "I": 0.9, "Art": 0.2, "S": 0.4, "Ent": 0.5, "Con": 0.6 },
+      "oceanBoost": { "C": 0.4 },
+      "time": ["low", "medium", "high"],
+      "budget": ["free"],
+      "activity": "low",
+      "description": {
+        "en": "The ultimate strategy game. Compete online or in person, improve your thinking skills.",
+        "ru": "Высшая стратегическая игра. Соревнуйся онлайн или лично, развивай мышление.",
+        "fr": "Le jeu de stratégie ultime. Compétez en ligne ou en personne."
+      }
+    },
+    {
+      "id": "languages",
+      "name": { "en": "Language Learning", "ru": "Изучение языков", "fr": "Apprentissage des langues" },
+      "riasec": { "R": 0.1, "I": 0.7, "Art": 0.3, "S": 0.6, "Ent": 0.2, "Con": 0.4 },
+      "oceanBoost": { "O": 0.7, "C": 0.3 },
+      "time": ["low", "medium", "high", "unlimited"],
+      "budget": ["free", "small"],
+      "activity": "low",
+      "description": {
+        "en": "Open doors to new cultures and connections. Learn at your own pace with apps or tutors.",
+        "ru": "Открой двери к новым культурам. Учись в своём темпе с приложениями или репетиторами.",
+        "fr": "Ouvrez des portes vers de nouvelles cultures. Apprenez à votre rythme."
+      }
+    },
+    {
+      "id": "painting",
+      "name": { "en": "Painting", "ru": "Живопись", "fr": "Peinture" },
+      "riasec": { "R": 0.3, "I": 0.4, "Art": 0.95, "S": 0.2, "Ent": 0.1, "Con": 0.2 },
+      "oceanBoost": { "O": 0.8, "N": 0.2 },
+      "time": ["medium", "high", "unlimited"],
+      "budget": ["small", "medium"],
+      "activity": "low",
+      "description": {
+        "en": "Express yourself through colors and shapes. From watercolors to oils, find your medium.",
+        "ru": "Выражай себя через цвета и формы. От акварели до масла — найди свой стиль.",
+        "fr": "Exprimez-vous à travers les couleurs. De l'aquarelle à l'huile."
+      }
+    },
+    {
+      "id": "music",
+      "name": { "en": "Music", "ru": "Музыка", "fr": "Musique" },
+      "riasec": { "R": 0.3, "I": 0.3, "Art": 0.9, "S": 0.5, "Ent": 0.4, "Con": 0.3 },
+      "oceanBoost": { "O": 0.6, "E": 0.3 },
+      "time": ["medium", "high", "unlimited"],
+      "budget": ["small", "medium", "high"],
+      "activity": "low",
+      "description": {
+        "en": "Learn an instrument, produce beats, or join a band. Music is universal and rewarding.",
+        "ru": "Учись играть, создавай биты или присоединяйся к группе. Музыка универсальна.",
+        "fr": "Apprenez un instrument, produisez des beats ou rejoignez un groupe."
+      }
+    },
+    {
+      "id": "writing",
+      "name": { "en": "Writing", "ru": "Писательство", "fr": "Écriture" },
+      "riasec": { "R": 0.1, "I": 0.5, "Art": 0.9, "S": 0.3, "Ent": 0.2, "Con": 0.3 },
+      "oceanBoost": { "O": 0.7 },
+      "time": ["low", "medium", "high", "unlimited"],
+      "budget": ["free"],
+      "activity": "low",
+      "description": {
+        "en": "Tell stories, blog, journal, or write poetry. Put your thoughts into words.",
+        "ru": "Рассказывай истории, веди блог или пиши стихи. Переводи мысли в слова.",
+        "fr": "Racontez des histoires, bloguez ou écrivez de la poésie."
+      }
+    },
+    {
+      "id": "photography",
+      "name": { "en": "Photography", "ru": "Фотография", "fr": "Photographie" },
+      "riasec": { "R": 0.4, "I": 0.5, "Art": 0.85, "S": 0.3, "Ent": 0.3, "Con": 0.3 },
+      "oceanBoost": { "O": 0.6, "C": 0.3 },
+      "time": ["low", "medium", "high", "unlimited"],
+      "budget": ["free", "small", "medium", "high"],
+      "activity": "medium",
+      "description": {
+        "en": "Capture moments and tell visual stories. Start with your phone, grow into professional gear.",
+        "ru": "Лови моменты и рассказывай визуальные истории. Начни с телефона.",
+        "fr": "Capturez des moments et racontez des histoires visuelles."
+      }
+    },
+    {
+      "id": "dance",
+      "name": { "en": "Dancing", "ru": "Танцы", "fr": "Danse" },
+      "riasec": { "R": 0.4, "I": 0.2, "Art": 0.8, "S": 0.6, "Ent": 0.5, "Con": 0.2 },
+      "oceanBoost": { "E": 0.5, "O": 0.4 },
+      "time": ["medium", "high"],
+      "budget": ["free", "small", "medium"],
+      "activity": "high",
+      "description": {
+        "en": "Express yourself through movement. From salsa to hip-hop, there's a style for everyone.",
+        "ru": "Выражай себя через движение. От сальсы до хип-хопа — стиль для каждого.",
+        "fr": "Exprimez-vous par le mouvement. De la salsa au hip-hop."
+      }
+    },
+    {
+      "id": "volunteering",
+      "name": { "en": "Volunteering", "ru": "Волонтёрство", "fr": "Bénévolat" },
+      "riasec": { "R": 0.3, "I": 0.2, "Art": 0.2, "S": 0.95, "Ent": 0.4, "Con": 0.3 },
+      "oceanBoost": { "A": 0.7, "E": 0.3 },
+      "time": ["low", "medium", "high"],
+      "budget": ["free"],
+      "activity": "medium",
+      "description": {
+        "en": "Give back to your community. Help others and feel the reward of making a difference.",
+        "ru": "Помогай сообществу. Ощути награду от того, что делаешь мир лучше.",
+        "fr": "Donnez à votre communauté. Ressentez la récompense d'aider."
+      }
+    },
+    {
+      "id": "team-sports",
+      "name": { "en": "Team Sports", "ru": "Командный спорт", "fr": "Sports d'équipe" },
+      "riasec": { "R": 0.6, "I": 0.2, "Art": 0.1, "S": 0.8, "Ent": 0.7, "Con": 0.3 },
+      "oceanBoost": { "E": 0.7, "A": 0.3 },
+      "time": ["medium", "high"],
+      "budget": ["free", "small", "medium"],
+      "activity": "high",
+      "description": {
+        "en": "Soccer, basketball, volleyball — compete with a team and build lasting friendships.",
+        "ru": "Футбол, баскетбол, волейбол — соревнуйся в команде и заводи друзей.",
+        "fr": "Football, basketball, volleyball — compétez en équipe."
+      }
+    },
+    {
+      "id": "board-games",
+      "name": { "en": "Board Games", "ru": "Настольные игры", "fr": "Jeux de société" },
+      "riasec": { "R": 0.2, "I": 0.6, "Art": 0.3, "S": 0.7, "Ent": 0.4, "Con": 0.4 },
+      "oceanBoost": { "E": 0.2 },
+      "time": ["low", "medium"],
+      "budget": ["small", "medium"],
+      "activity": "low",
+      "description": {
+        "en": "From strategy to party games, enjoy quality time with friends and family.",
+        "ru": "От стратегий до вечеринок — проводи время с друзьями и семьёй.",
+        "fr": "De la stratégie aux jeux de fête, passez du bon temps."
+      }
+    },
+    {
+      "id": "podcasting",
+      "name": { "en": "Podcasting", "ru": "Подкастинг", "fr": "Podcasting" },
+      "riasec": { "R": 0.3, "I": 0.4, "Art": 0.6, "S": 0.5, "Ent": 0.8, "Con": 0.3 },
+      "oceanBoost": { "E": 0.5, "O": 0.4 },
+      "time": ["medium", "high"],
+      "budget": ["small", "medium"],
+      "activity": "low",
+      "description": {
+        "en": "Share your voice and ideas with the world. Interview guests or go solo.",
+        "ru": "Делись голосом и идеями с миром. Бери интервью или говори сам.",
+        "fr": "Partagez votre voix avec le monde. Interviewez ou parlez seul."
+      }
+    },
+    {
+      "id": "blogging",
+      "name": { "en": "Blogging", "ru": "Блогинг", "fr": "Blogging" },
+      "riasec": { "R": 0.2, "I": 0.4, "Art": 0.6, "S": 0.4, "Ent": 0.7, "Con": 0.3 },
+      "oceanBoost": { "O": 0.4, "E": 0.3 },
+      "time": ["low", "medium", "high"],
+      "budget": ["free", "small"],
+      "activity": "low",
+      "description": {
+        "en": "Share your expertise, stories, or opinions online. Build an audience around your passion.",
+        "ru": "Делись опытом и мнениями онлайн. Собирай аудиторию вокруг своей страсти.",
+        "fr": "Partagez votre expertise en ligne. Construisez une audience."
+      }
+    },
+    {
+      "id": "collecting",
+      "name": { "en": "Collecting", "ru": "Коллекционирование", "fr": "Collection" },
+      "riasec": { "R": 0.3, "I": 0.5, "Art": 0.4, "S": 0.3, "Ent": 0.2, "Con": 0.8 },
+      "oceanBoost": { "C": 0.5 },
+      "time": ["low", "medium", "high"],
+      "budget": ["small", "medium", "high"],
+      "activity": "low",
+      "description": {
+        "en": "Stamps, coins, vinyl, art — build a collection that reflects your interests.",
+        "ru": "Марки, монеты, винил, искусство — собирай то, что отражает тебя.",
+        "fr": "Timbres, pièces, vinyles — construisez une collection."
+      }
+    },
+    {
+      "id": "journaling",
+      "name": { "en": "Journaling", "ru": "Ведение дневника", "fr": "Journal intime" },
+      "riasec": { "R": 0.1, "I": 0.4, "Art": 0.5, "S": 0.1, "Ent": 0.1, "Con": 0.6 },
+      "oceanBoost": { "N": -0.3, "O": 0.3 },
+      "time": ["low", "medium"],
+      "budget": ["free", "small"],
+      "activity": "low",
+      "description": {
+        "en": "Reflect on your thoughts and track your growth. Therapeutic and insightful.",
+        "ru": "Рефлексируй и отслеживай свой рост. Терапевтично и полезно.",
+        "fr": "Réfléchissez et suivez votre croissance. Thérapeutique."
+      }
+    },
+    {
+      "id": "yoga",
+      "name": { "en": "Yoga", "ru": "Йога", "fr": "Yoga" },
+      "riasec": { "R": 0.4, "I": 0.3, "Art": 0.4, "S": 0.4, "Ent": 0.1, "Con": 0.3 },
+      "oceanBoost": { "N": -0.5, "O": 0.3 },
+      "time": ["low", "medium", "high"],
+      "budget": ["free", "small", "medium"],
+      "activity": "medium",
+      "description": {
+        "en": "Connect body and mind. Improve flexibility, strength, and mental clarity.",
+        "ru": "Соедини тело и разум. Улучши гибкость, силу и ясность ума.",
+        "fr": "Connectez corps et esprit. Améliorez flexibilité et clarté."
+      }
+    }
+  ]
+}
