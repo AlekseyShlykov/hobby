@@ -17,6 +17,7 @@ import testConfig from '@/data/test-config.json';
 import type { Hobby, OceanTrait } from '@/types';
 
 const traitOrder: OceanTrait[] = ['O', 'C', 'E', 'A', 'N'];
+const radiusTicks = [2, 4, 6, 8, 10].map((value, index) => ({ value, coordinate: value, index }));
 
 export default function Results() {
   const { locale, scores, context, answers, resetTest } = useTestStore();
@@ -102,7 +103,7 @@ export default function Results() {
                 <PolarRadiusAxis
                   angle={90}
                   domain={[0, 10]}
-                  ticks={[2, 4, 6, 8, 10]}
+                  ticks={radiusTicks}
                   tick={{ fontSize: 10, fill: 'var(--text-muted)' }}
                 />
                 <Radar
@@ -132,7 +133,7 @@ export default function Results() {
                 <PolarRadiusAxis
                   angle={90}
                   domain={[0, 10]}
-                  ticks={[2, 4, 6, 8, 10]}
+                  ticks={radiusTicks}
                   tick={{ fontSize: 10, fill: 'var(--text-muted)' }}
                 />
                 <Radar
