@@ -152,13 +152,17 @@ export default function PlaceholderImage({
   const label = getLabel(name);
   const [imageError, setImageError] = useState(false);
 
-  // Determine image path based on name pattern
+  // basePath is required for GitHub Pages; Next.js does not add it to Image src in static export
+  const basePath = typeof process.env.NEXT_PUBLIC_BASE_PATH === 'string' ? process.env.NEXT_PUBLIC_BASE_PATH : '';
+
+  // Determine image path based on name pattern (include basePath for static host)
   const getImagePath = (name: string): string => {
-    if (name.startsWith('hero')) return `/images/${name}.png`;
-    if (name.startsWith('v')) return `/images/visual/${name}.png`;
-    if (name.startsWith('c')) return `/images/context/${name}.png`;
-    if (name.startsWith('q')) return `/images/questions/${name}.png`;
-    return `/images/${name}.png`;
+    const root = basePath || '';
+    if (name.startsWith('hero')) return `${root}/images/${name}.png`;
+    if (name.startsWith('v')) return `${root}/images/visual/${name}.png`;
+    if (name.startsWith('c')) return `${root}/images/context/${name}.png`;
+    if (name.startsWith('q')) return `${root}/images/questions/${name}.png`;
+    return `${root}/images/${name}.png`;
   };
 
   const imagePath = getImagePath(name);

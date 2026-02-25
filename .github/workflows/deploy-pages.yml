@@ -23,6 +23,7 @@ jobs:
         working-directory: hobby-finder
     env:
       BASE_PATH: /${{ github.event.repository.name }}
+      NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
       NEXT_PUBLIC_DISABLE_SAVE: "true"
     steps:
       - name: Checkout
