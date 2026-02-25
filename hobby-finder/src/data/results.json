@@ -155,6 +155,12 @@
       "shareCardTop3": { "en": "Top 3", "ru": "Топ 3", "fr": "Top 3" },
       "retake": { "en": "Retake Test", "ru": "Пройти заново", "fr": "Refaire le test" },
       "findNearby": { "en": "Find These Hobbies Near Me", "ru": "Найти эти хобби рядом", "fr": "Trouver ces hobbies près de moi" },
+      "getFullResultByEmail": { "en": "Get Full Result by Email", "ru": "Получить полный результат на почту", "fr": "Recevoir le résultat complet par email" },
+      "emailPlaceholder": { "en": "Your email", "ru": "Ваша почта", "fr": "Votre email" },
+      "emailSend": { "en": "Send", "ru": "Отправить", "fr": "Envoyer" },
+      "emailSuccess": { "en": "Full result sent to your email.", "ru": "Полный результат отправлен на вашу почту.", "fr": "Résultat complet envoyé à votre email." },
+      "emailError": { "en": "Failed to send. Try again later.", "ru": "Не удалось отправить. Попробуйте позже.", "fr": "Échec de l'envoi. Réessayez plus tard." },
+      "emailInvalid": { "en": "Please enter a valid email.", "ru": "Введите корректный email.", "fr": "Veuillez entrer un email valide." },
       "loadingLocation": { "en": "Getting your location...", "ru": "Определяем местоположение...", "fr": "Localisation en cours..." },
       "locationError": { "en": "Could not get location. Please enable location services.", "ru": "Не удалось определить местоположение. Включите геолокацию.", "fr": "Impossible d'obtenir la localisation. Activez les services de localisation." },
       "mapTitle": { "en": "Places for Your Hobbies Nearby", "ru": "Места для твоих хобби поблизости", "fr": "Lieux pour vos hobbies à proximité" }

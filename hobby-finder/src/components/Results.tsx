@@ -33,6 +33,11 @@ export default function Results() {
   const [locationError, setLocationError] = useState<string | null>(null);
   const shareCardRef = useRef<HTMLDivElement>(null);
   const [shareInProgress, setShareInProgress] = useState(false);
+  const [showEmailForm, setShowEmailForm] = useState(false);
+  const [email, setEmail] = useState('');
+  const [emailLoading, setEmailLoading] = useState(false);
+  const [emailSuccess, setEmailSuccess] = useState(false);
+  const [emailError, setEmailError] = useState<string | null>(null);
 
   // Get recommended hobbies
   const hobbies = hobbiesData.hobbies as Hobby[];
@@ -119,6 +124,61 @@ export default function Results() {
     URL.revokeObjectURL(a.href);
     if (navigator.clipboard?.writeText) {
       navigator.clipboard.writeText(`${text}\n${url}`);
+    }
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  async function handleEmailSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const trimmed = email.trim();
+    if (!trimmed || !emailRegex.test(trimmed)) {
+      setEmailError(ui.emailInvalid?.[locale] ?? 'Please enter a valid email.');
+      return;
+    }
+    setEmailError(null);
+    setEmailLoading(true);
+    try {
+      const payload = {
+        email: trimmed,
+        locale,
+        scores,
+        context,
+        oceanData,
+        riasecData,
+        oceanDescriptions: allOceanDescriptions.map((d) => ({
+          traitName: d.traitName,
+          level: d.level,
+          value: d.value,
+          title: d.title,
+          description: d.description,
+        })),
+        recommendations: recommendations.map(({ hobby, score, reasons }) => ({
+          name: hobby.name,
+          description: hobby.description,
+          score,
+          reasons,
+        })),
+      };
+      const res = await fetch('/api/send-full-result/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const contentType = res.headers.get('content-type') || '';
+      const data = contentType.includes('application/json')
+        ? await res.json()
+        : { error: res.status === 404 ? 'API not available (run with server, not static export)' : `HTTP ${res.status}` };
+      if (!res.ok) {
+        console.error('send-full-result failed:', res.status, data);
+        throw new Error(data.error || 'Request failed');
+      }
+      setEmailSuccess(true);
+      setEmail('');
+    } catch (err) {
+      const message = err instanceof Error ? err.message : '';
+      setEmailError(message || ui.emailError?.[locale] ?? 'Failed to send. Try again later.');
+    } finally {
+      setEmailLoading(false);
     }
   }
 
@@ -242,9 +302,15 @@ export default function Results() {
           <h2 className="text-3xl font-bold mb-8" style={{ color: 'var(--text-primary)' }}>
             {{ en: 'Your Big Five Personality Profile', ru: 'Твой профиль по Big Five', fr: 'Votre profil Big Five' }[locale]}
           </h2>
-          <div className="space-y-8">
+          <div className="space-y-8 relative">
             {allOceanDescriptions.map((desc, i) => (
-              <div key={i} className="pb-8 last:pb-0" style={{ borderBottom: i < allOceanDescriptions.length - 1 ? '1px solid var(--border)' : 'none' }}>
+              <div
+                key={i}
+                className={`pb-8 last:pb-0 transition-all duration-300 ${i >= 2 ? 'select-none pointer-events-none blur-md' : ''}`}
+                style={{
+                  borderBottom: i < allOceanDescriptions.length - 1 ? '1px solid var(--border)' : 'none',
+                }}
+              >
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-sm font-semibold uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>
                     {desc.traitName}
@@ -274,11 +340,11 @@ export default function Results() {
             {ui.hobbies[locale]}
           </h2>
 
-          <div className="space-y-5">
+          <div className="space-y-5 relative">
             {recommendations.map(({ hobby, score, reasons }, index) => (
               <div
                 key={hobby.id}
-                className="rounded-3xl p-6 border transition-all duration-300 hover:scale-[1.01]" 
+                className={`rounded-3xl p-6 border transition-all duration-300 ${index >= 2 ? 'select-none pointer-events-none blur-md' : 'hover:scale-[1.01]'}`}
                 style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}
               >
                 <div className="flex items-start gap-5">
@@ -327,6 +393,16 @@ export default function Results() {
             </span>
           </button>
           <button
+            onClick={() => { setShowEmailForm(true); setEmailSuccess(false); setEmailError(null); }}
+            className="px-8 py-4 font-semibold rounded-2xl transition-all duration-300 border hover:scale-[1.02] flex items-center gap-2"
+            style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)', color: 'var(--text-primary)' }}
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            {ui.getFullResultByEmail?.[locale]}
+          </button>
+          <button
             onClick={resetTest}
             className="px-8 py-4 font-semibold rounded-2xl transition-all duration-300 border hover:scale-[1.02]"
             style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)', color: 'var(--text-primary)' }}
@@ -334,6 +410,44 @@ export default function Results() {
             {ui.retake[locale]}
           </button>
         </div>
+
+        {/* Email form for full result */}
+        {(showEmailForm || emailSuccess) && (
+          <div className="rounded-3xl p-8 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
+            <h3 className="text-xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
+              {ui.getFullResultByEmail?.[locale]}
+            </h3>
+            {emailSuccess ? (
+              <p className="text-lg" style={{ color: 'var(--success)' }}>
+                {ui.emailSuccess?.[locale]}
+              </p>
+            ) : (
+              <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setEmailError(null); }}
+                  placeholder={ui.emailPlaceholder?.[locale] ?? 'Your email'}
+                  className="flex-1 px-4 py-3 rounded-xl border focus:outline-none focus:ring-2"
+                  style={{ background: 'var(--bg-primary)', borderColor: 'var(--border)', color: 'var(--text-primary)' }}
+                  disabled={emailLoading}
+                  autoFocus
+                />
+                <button
+                  type="submit"
+                  disabled={emailLoading}
+                  className="px-6 py-3 font-semibold rounded-xl transition-all disabled:opacity-70"
+                  style={{ background: 'var(--accent-primary)', color: 'white' }}
+                >
+                  {emailLoading ? (locale === 'ru' ? 'Отправка…' : locale === 'fr' ? 'Envoi…' : 'Sending…') : ui.emailSend?.[locale]}
+                </button>
+              </form>
+            )}
+            {emailError && (
+              <p className="mt-2 text-sm" style={{ color: 'var(--error, #ef4444)' }}>{emailError}</p>
+            )}
+          </div>
+        )}
 
         {/* Find Hobbies Nearby */}
         <div className="rounded-3xl p-8 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>

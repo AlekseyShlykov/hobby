@@ -279,6 +279,206 @@
         "ru": "Соедини тело и разум. Улучши гибкость, силу и ясность ума.",
         "fr": "Connectez corps et esprit. Améliorez flexibilité et clarté."
       }
+    },
+    {
+      "id": "running",
+      "name": {"en": "Running", "ru": "Бег", "fr": "Course à pied"},
+      "riasec": {"R": 0.8, "I": 0.1, "Art": 0.1, "S": 0.3, "Ent": 0.2, "Con": 0.6},
+      "oceanBoost": {"C": 0.5, "N": -0.3},
+      "time": ["low", "medium", "high"],
+      "budget": ["free", "small"],
+      "activity": "high",
+      "description": {"en": "Run outdoors or on a treadmill. Build endurance, clear your head, no equipment needed.", "ru": "Бегай на улице или на дорожке. Выносливость и ясная голова без лишнего снаряжения.", "fr": "Courez en extérieur ou sur tapis. Endurance et clarté sans équipement."}
+    },
+    {
+      "id": "knitting",
+      "name": {"en": "Knitting", "ru": "Вязание", "fr": "Tricot"},
+      "riasec": {"R": 0.5, "I": 0.3, "Art": 0.7, "S": 0.3, "Ent": 0.1, "Con": 0.5},
+      "oceanBoost": {"C": 0.4, "N": -0.3},
+      "time": ["low", "medium", "high"],
+      "budget": ["free", "small"],
+      "activity": "low",
+      "description": {"en": "Create scarves, sweaters, and more with yarn. Calming, portable, and rewarding.", "ru": "Создавай шарфы, свитера и другое из пряжи. Успокаивает и легко брать с собой.", "fr": "Créez écharpes, pulls et plus. Calmant, portable et gratifiant."}
+    },
+    {
+      "id": "aquarium",
+      "name": {"en": "Aquarium Keeping", "ru": "Аквариумистика", "fr": "Aquariophilie"},
+      "riasec": {"R": 0.4, "I": 0.7, "Art": 0.4, "S": 0.2, "Ent": 0.1, "Con": 0.6},
+      "oceanBoost": {"C": 0.5, "O": 0.3},
+      "time": ["low", "medium"],
+      "budget": ["small", "medium", "high"],
+      "activity": "low",
+      "description": {"en": "Keep fish and aquatic plants. Create a living ecosystem at home and learn about nature.", "ru": "Содержи рыбок и водные растения. Создай живой мир дома и изучай природу.", "fr": "Élevez poissons et plantes aquatiques. Créez un écosystème vivant chez vous."}
+    },
+    {
+      "id": "martial-arts",
+      "name": {"en": "Martial Arts", "ru": "Боевые искусства", "fr": "Arts martiaux"},
+      "riasec": {"R": 0.8, "I": 0.3, "Art": 0.3, "S": 0.5, "Ent": 0.3, "Con": 0.7},
+      "oceanBoost": {"C": 0.5, "N": -0.2},
+      "time": ["medium", "high"],
+      "budget": ["small", "medium"],
+      "activity": "high",
+      "description": {"en": "Karate, judo, taekwondo — discipline, self-defense, and fitness in one.", "ru": "Карате, дзюдо, тхэквондо — дисциплина, самооборона и форма в одном.", "fr": "Karaté, judo, taekwondo — discipline, self-défense et forme."}
+    },
+    {
+      "id": "calligraphy",
+      "name": {"en": "Calligraphy", "ru": "Каллиграфия", "fr": "Calligraphie"},
+      "riasec": {"R": 0.3, "I": 0.3, "Art": 0.85, "S": 0.2, "Ent": 0.1, "Con": 0.6},
+      "oceanBoost": {"C": 0.5, "O": 0.5},
+      "time": ["low", "medium", "high"],
+      "budget": ["free", "small"],
+      "activity": "low",
+      "description": {"en": "The art of beautiful writing. Patience and precision meet creativity.", "ru": "Искусство красивого письма. Терпение и точность встречаются с творчеством.", "fr": "L'art de la belle écriture. Patience, précision et créativité."}
+    },
+    {
+      "id": "astronomy",
+      "name": {"en": "Astronomy", "ru": "Астрономия", "fr": "Astronomie"},
+      "riasec": {"R": 0.2, "I": 0.95, "Art": 0.2, "S": 0.3, "Ent": 0.1, "Con": 0.3},
+      "oceanBoost": {"O": 0.6, "C": 0.2},
+      "time": ["low", "medium"],
+      "budget": ["free", "small", "medium", "high"],
+      "activity": "low",
+      "description": {"en": "Observe stars, planets, and galaxies. Stargaze with naked eye or telescope.", "ru": "Наблюдай звёзды, планеты и галактики. С неба или с телескопом.", "fr": "Observez étoiles et planètes. À l'œil nu ou au télescope."}
+    },
+    {
+      "id": "baking",
+      "name": {"en": "Baking", "ru": "Выпечка", "fr": "Pâtisserie"},
+      "riasec": {"R": 0.6, "I": 0.4, "Art": 0.7, "S": 0.5, "Ent": 0.2, "Con": 0.5},
+      "oceanBoost": {"O": 0.4, "C": 0.4},
+      "time": ["low", "medium", "high"],
+      "budget": ["small", "medium"],
+      "activity": "low",
+      "description": {"en": "Bread, cakes, pastries — precise and creative. Share treats with others.", "ru": "Хлеб, торты, выпечка — точность и творчество. Угощай других.", "fr": "Pain, gâteaux, pâtisseries — précision et créativité. Partagez."}
+    },
+    {
+      "id": "birdwatching",
+      "name": {"en": "Birdwatching", "ru": "Наблюдение за птицами", "fr": "Ornithologie"},
+      "riasec": {"R": 0.3, "I": 0.7, "Art": 0.2, "S": 0.5, "Ent": 0.2, "Con": 0.4},
+      "oceanBoost": {"O": 0.5, "N": -0.2},
+      "time": ["low", "medium", "high"],
+      "budget": ["free", "small"],
+      "activity": "medium",
+      "description": {"en": "Identify birds in nature or your backyard. Peaceful and educational.", "ru": "Определяй птиц в природе или у дома. Спокойно и познавательно.", "fr": "Identifiez les oiseaux en nature. Paisible et instructif."}
+    },
+    {
+      "id": "pottery",
+      "name": {"en": "Pottery", "ru": "Керамика", "fr": "Poterie"},
+      "riasec": {"R": 0.7, "I": 0.3, "Art": 0.8, "S": 0.3, "Ent": 0.2, "Con": 0.3},
+      "oceanBoost": {"O": 0.5, "C": 0.3},
+      "time": ["medium", "high"],
+      "budget": ["small", "medium"],
+      "activity": "low",
+      "description": {"en": "Shape clay into bowls, vases, and sculptures. Hands-on and satisfying.", "ru": "Лепи из глины чаши, вазы и скульптуры. Руками и с душой.", "fr": "Façonnez l'argile en bols et vases. Créatif et satisfaisant."}
+    },
+    {
+      "id": "reading",
+      "name": {"en": "Reading", "ru": "Чтение", "fr": "Lecture"},
+      "riasec": {"R": 0.1, "I": 0.6, "Art": 0.6, "S": 0.3, "Ent": 0.1, "Con": 0.3},
+      "oceanBoost": {"O": 0.7, "N": -0.2},
+      "time": ["low", "medium", "high", "unlimited"],
+      "budget": ["free", "small"],
+      "activity": "low",
+      "description": {"en": "Fiction, non-fiction, or comics. Escape and learn at your own pace.", "ru": "Худлит, нон-фикшн или комиксы. Побег и знания в своём темпе.", "fr": "Fiction, essais ou BD. Évasion et apprentissage à votre rythme."}
+    },
+    {
+      "id": "cycling",
+      "name": {"en": "Cycling", "ru": "Велоспорт", "fr": "Vélo"},
+      "riasec": {"R": 0.8, "I": 0.2, "Art": 0.1, "S": 0.4, "Ent": 0.2, "Con": 0.2},
+      "oceanBoost": {"O": 0.3, "E": 0.3},
+      "time": ["medium", "high", "unlimited"],
+      "budget": ["small", "medium", "high"],
+      "activity": "high",
+      "description": {"en": "Ride for commute, fitness, or adventure. Explore places on two wheels.", "ru": "Езда на работу, для формы или приключений. Исследуй мир на двух колёсах.", "fr": "Vélo au quotidien, sport ou aventure. Explorez sur deux roues."}
+    },
+    {
+      "id": "meditation",
+      "name": {"en": "Meditation", "ru": "Медитация", "fr": "Méditation"},
+      "riasec": {"R": 0.1, "I": 0.5, "Art": 0.2, "S": 0.2, "Ent": 0.1, "Con": 0.4},
+      "oceanBoost": {"N": -0.6, "O": 0.3},
+      "time": ["low", "medium"],
+      "budget": ["free"],
+      "activity": "low",
+      "description": {"en": "Quiet the mind, reduce stress, improve focus. No gear required.", "ru": "Успокой ум, снизь стресс, улучши концентрацию. Никакого снаряжения.", "fr": "Calmez l'esprit, réduisez le stress. Aucun équipement."}
+    },
+    {
+      "id": "sewing",
+      "name": {"en": "Sewing", "ru": "Шитьё", "fr": "Couture"},
+      "riasec": {"R": 0.7, "I": 0.3, "Art": 0.6, "S": 0.3, "Ent": 0.2, "Con": 0.5},
+      "oceanBoost": {"C": 0.4, "O": 0.3},
+      "time": ["low", "medium", "high"],
+      "budget": ["small", "medium"],
+      "activity": "low",
+      "description": {"en": "Make or alter clothes, bags, home decor. Practical and creative.", "ru": "Шей или переделывай одежду, сумки, декор. Практично и творчески.", "fr": "Créez ou modifiez vêtements et accessoires. Pratique et créatif."}
+    },
+    {
+      "id": "rock-climbing",
+      "name": {"en": "Rock Climbing", "ru": "Скалолазание", "fr": "Escalade"},
+      "riasec": {"R": 0.9, "I": 0.3, "Art": 0.2, "S": 0.5, "Ent": 0.4, "Con": 0.3},
+      "oceanBoost": {"O": 0.5, "E": 0.3},
+      "time": ["medium", "high"],
+      "budget": ["small", "medium"],
+      "activity": "high",
+      "description": {"en": "Climb walls or real rock. Strength, problem-solving, and adrenaline.", "ru": "Лазай по стенам или скалам. Сила, головоломки и адреналин.", "fr": "Grimpez en salle ou en falaise. Force, réflexion et adrénaline."}
+    },
+    {
+      "id": "videography",
+      "name": {"en": "Videography", "ru": "Видеосъёмка", "fr": "Vidéographie"},
+      "riasec": {"R": 0.3, "I": 0.4, "Art": 0.8, "S": 0.3, "Ent": 0.6, "Con": 0.3},
+      "oceanBoost": {"O": 0.5, "E": 0.3},
+      "time": ["medium", "high", "unlimited"],
+      "budget": ["free", "small", "medium", "high"],
+      "activity": "medium",
+      "description": {"en": "Create short films, vlogs, or tutorials. Tell stories with moving images.", "ru": "Снимай короткометражки, влоги или туториалы. Рассказывай истории в кадре.", "fr": "Créez courts métrages, vlogs ou tutoriels. Racontez en images."}
+    },
+    {
+      "id": "fishing",
+      "name": {"en": "Fishing", "ru": "Рыбалка", "fr": "Pêche"},
+      "riasec": {"R": 0.7, "I": 0.5, "Art": 0.2, "S": 0.4, "Ent": 0.2, "Con": 0.4},
+      "oceanBoost": {"N": -0.4, "O": 0.2},
+      "time": ["low", "medium", "high"],
+      "budget": ["small", "medium", "high"],
+      "activity": "low",
+      "description": {"en": "Cast a line and wait. Patience, nature, and sometimes dinner.", "ru": "Забрось удочку и жди. Терпение, природа и иногда улов.", "fr": "Lancez la ligne et attendez. Patience, nature et parfois le dîner."}
+    },
+    {
+      "id": "drawing",
+      "name": {"en": "Drawing", "ru": "Рисование", "fr": "Dessin"},
+      "riasec": {"R": 0.3, "I": 0.4, "Art": 0.9, "S": 0.2, "Ent": 0.1, "Con": 0.3},
+      "oceanBoost": {"O": 0.6},
+      "time": ["low", "medium", "high", "unlimited"],
+      "budget": ["free", "small"],
+      "activity": "low",
+      "description": {"en": "Sketch with pencil, ink, or digital. Foundation of visual art.", "ru": "Рисуй карандашом, тушью или цифрой. Основа изобразительного искусства.", "fr": "Dessinez au crayon, à l'encre ou au numérique. Base des arts visuels."}
+    },
+    {
+      "id": "tabletop-rpg",
+      "name": {"en": "Tabletop RPGs", "ru": "Настольные РПГ", "fr": "Jeux de rôle sur table"},
+      "riasec": {"R": 0.2, "I": 0.6, "Art": 0.6, "S": 0.8, "Ent": 0.3, "Con": 0.3},
+      "oceanBoost": {"O": 0.5, "E": 0.4},
+      "time": ["medium", "high"],
+      "budget": ["free", "small"],
+      "activity": "low",
+      "description": {"en": "D&D and similar games. Create stories with friends, roll dice.", "ru": "D&D и похожие игры. Создавай истории с друзьями, кидай кубики.", "fr": "D&D et similaires. Créez des histoires entre amis, lancez les dés."}
+    },
+    {
+      "id": "scuba-diving",
+      "name": {"en": "Scuba Diving", "ru": "Дайвинг", "fr": "Plongée sous-marine"},
+      "riasec": {"R": 0.7, "I": 0.4, "Art": 0.2, "S": 0.4, "Ent": 0.4, "Con": 0.3},
+      "oceanBoost": {"O": 0.6, "E": 0.3},
+      "time": ["medium", "high"],
+      "budget": ["high"],
+      "activity": "high",
+      "description": {"en": "Explore the underwater world. Certification opens oceans of adventure.", "ru": "Исследуй подводный мир. Сертификат открывает океаны приключений.", "fr": "Explorez le monde sous-marin. Certification = océans d'aventures."}
+    },
+    {
+      "id": "puzzles",
+      "name": {"en": "Puzzles", "ru": "Пазлы и головоломки", "fr": "Puzzles"},
+      "riasec": {"R": 0.2, "I": 0.7, "Art": 0.3, "S": 0.3, "Ent": 0.2, "Con": 0.6},
+      "oceanBoost": {"C": 0.5},
+      "time": ["low", "medium", "high"],
+      "budget": ["free", "small"],
+      "activity": "low",
+      "description": {"en": "Jigsaw, crosswords, logic puzzles. Train your brain at your own pace.", "ru": "Пазлы, кроссворды, логические задачи. Тренируй мозг в своём темпе.", "fr": "Puzzles, mots fléchés, casse-têtes. Entraînez le cerveau."}
     }
   ]
 }

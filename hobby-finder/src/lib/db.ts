@@ -43,6 +43,13 @@ function initializeDb(db: Database.Database): void {
       created_at TEXT NOT NULL
     )
   `);
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS full_result_emails (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    )
+  `);
 }
 
 export interface DbTestResult {
@@ -94,4 +101,24 @@ export function getAllResults(): DbTestResult[] {
   const db = getDb();
   const stmt = db.prepare('SELECT * FROM test_results ORDER BY created_at DESC');
   return stmt.all() as DbTestResult[];
+}
+
+export interface FullResultEmailRow {
+  id: number;
+  email: string;
+  created_at: string;
+}
+
+export function saveFullResultEmail(email: string): void {
+  const db = getDb();
+  const stmt = db.prepare(`
+    INSERT INTO full_result_emails (email, created_at) VALUES (?, ?)
+  `);
+  stmt.run(email, new Date().toISOString());
+}
+
+export function getAllFullResultEmails(): FullResultEmailRow[] {
+  const db = getDb();
+  const stmt = db.prepare('SELECT * FROM full_result_emails ORDER BY created_at DESC');
+  return stmt.all() as FullResultEmailRow[];
 }
