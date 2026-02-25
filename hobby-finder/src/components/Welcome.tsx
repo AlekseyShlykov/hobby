@@ -11,7 +11,8 @@ export default function Welcome() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6" style={{ background: 'var(--bg-primary)' }}>
-      <div className="absolute top-6 right-6">
+      {/* Language: fixed at very top; on mobile full-width bar, on desktop top-right */}
+      <div className="fixed top-0 left-0 right-0 z-[100] flex justify-end p-4 pt-[max(0.75rem,env(safe-area-inset-top,0.75rem))] md:left-auto md:top-6 md:right-6 md:p-0 md:pt-0">
         <LanguageSelector />
       </div>
 

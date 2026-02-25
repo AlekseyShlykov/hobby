@@ -24,6 +24,62 @@ const radiusTicks = [2, 4, 6, 8, 10].map((value, index) => ({ value, coordinate:
 const GRID_MAX_R = 120;
 const gridRadii = [2, 4, 6, 8, 10].map((v) => (v / 10) * GRID_MAX_R);
 
+/** Split long axis label into lines so it fits on mobile (all languages). */
+function wrapAxisLabel(text: string, maxCharsPerLine = 12): string[] {
+  if (!text || text.length <= maxCharsPerLine) return [text];
+  const lines: string[] = [];
+  let rest = text;
+  while (rest.length > 0) {
+    if (rest.length <= maxCharsPerLine) {
+      lines.push(rest);
+      break;
+    }
+    const chunk = rest.slice(0, maxCharsPerLine);
+    const space = chunk.lastIndexOf(' ');
+    const splitAt = space >= 0 ? space + 1 : maxCharsPerLine;
+    lines.push(rest.slice(0, splitAt).trim());
+    rest = rest.slice(splitAt).trim();
+  }
+  return lines;
+}
+
+/** Custom tick so axis labels wrap and stay visible on mobile (no clipping). */
+function RadarAxisTick({
+  payload,
+  x,
+  y,
+  textAnchor,
+}: {
+  payload: { value: string } | { value: string }[];
+  x: number;
+  y: number;
+  textAnchor: 'start' | 'middle' | 'end';
+}) {
+  const label = (Array.isArray(payload) ? payload[0]?.value : payload?.value) ?? '';
+  const lines = wrapAxisLabel(label);
+  const fontSize = 12;
+  const lineHeight = 14;
+  const totalHeight = lines.length * lineHeight;
+  const startY = y - totalHeight / 2 + lineHeight / 2;
+  return (
+    <g style={{ overflow: 'visible' }}>
+      {lines.map((line, i) => (
+        <text
+          key={i}
+          x={x}
+          y={startY + i * lineHeight}
+          textAnchor={textAnchor}
+          fontSize={fontSize}
+          fill="var(--text-secondary)"
+          style={{ overflow: 'visible' }}
+        >
+          {line}
+        </text>
+      ))}
+    </g>
+  );
+}
+
 export default function Results() {
   const { locale, scores, context, answers, resetTest } = useTestStore();
   const ui = resultsData.ui.results;
@@ -300,16 +356,17 @@ export default function Results() {
         {/* Radar Charts */}
         <div className="grid md:grid-cols-2 gap-6">
           {/* OCEAN Chart */}
-          <div className="rounded-3xl p-6 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
+          <div className="rounded-3xl p-6 border overflow-visible" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
             <h3 className="text-xl font-semibold text-center mb-6" style={{ color: 'var(--text-primary)' }}>
               {ui.personality[locale]}
             </h3>
-            <ResponsiveContainer width="100%" height={300}>
-              <RadarChart data={oceanData}>
+            <div className="overflow-visible">
+            <ResponsiveContainer width="100%" height={300} className="overflow-visible">
+              <RadarChart data={oceanData} margin={{ top: 52, right: 52, bottom: 52, left: 52 }}>
                 <PolarGrid stroke="rgba(107, 95, 122, 0.25)" gridType="circle" polarRadius={gridRadii} />
                 <PolarAngleAxis
                   dataKey="trait"
-                  tick={{ fontSize: 12, fill: 'var(--text-secondary)' }}
+                  tick={(props) => <RadarAxisTick {...props} />}
                 />
                 <PolarRadiusAxis
                   angle={90}
@@ -327,19 +384,21 @@ export default function Results() {
                 />
               </RadarChart>
             </ResponsiveContainer>
+            </div>
           </div>
 
           {/* RIASEC Chart */}
-          <div className="rounded-3xl p-6 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
+          <div className="rounded-3xl p-6 border overflow-visible" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
             <h3 className="text-xl font-semibold text-center mb-6" style={{ color: 'var(--text-primary)' }}>
               {ui.interests[locale]}
             </h3>
-            <ResponsiveContainer width="100%" height={300}>
-              <RadarChart data={riasecData}>
+            <div className="overflow-visible">
+            <ResponsiveContainer width="100%" height={300} className="overflow-visible">
+              <RadarChart data={riasecData} margin={{ top: 52, right: 52, bottom: 52, left: 52 }}>
                 <PolarGrid stroke="rgba(107, 95, 122, 0.25)" gridType="circle" polarRadius={gridRadii} />
                 <PolarAngleAxis
                   dataKey="trait"
-                  tick={{ fontSize: 12, fill: 'var(--text-secondary)' }}
+                  tick={(props) => <RadarAxisTick {...props} />}
                 />
                 <PolarRadiusAxis
                   angle={90}
@@ -357,6 +416,7 @@ export default function Results() {
                 />
               </RadarChart>
             </ResponsiveContainer>
+            </div>
           </div>
         </div>
 
