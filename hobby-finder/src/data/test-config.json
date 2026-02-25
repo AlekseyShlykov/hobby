@@ -432,6 +432,34 @@
           { "id": "c", "image": "v3c-digital", "impacts": { "I": 2, "Con": 0.5 } },
           { "id": "d", "image": "v3d-stage", "impacts": { "Ent": 2, "Art": 1 } }
         ]
+      },
+      {
+        "id": "v4",
+        "prompt": {
+          "en": "How do you prefer to work or learn?",
+          "ru": "Как тебе комфортнее работать или учиться?",
+          "fr": "Comment préférez-vous travailler ou apprendre?"
+        },
+        "options": [
+          { "id": "a", "image": "v4a-solo", "impacts": { "I": 1.5, "C": 0.5 } },
+          { "id": "b", "image": "v4b-pair", "impacts": { "S": 1.5 } },
+          { "id": "c", "image": "v4c-team", "impacts": { "S": 1, "Ent": 1 } },
+          { "id": "d", "image": "v4d-leader", "impacts": { "Ent": 2, "E": 1 } }
+        ]
+      },
+      {
+        "id": "v5",
+        "prompt": {
+          "en": "What energy do you prefer in your free time?",
+          "ru": "Какую энергию ты предпочитаешь в свободное время?",
+          "fr": "Quelle énergie préférez-vous dans votre temps libre?"
+        },
+        "options": [
+          { "id": "a", "image": "v5a-meditate", "impacts": { "N": -1, "C": 1 } },
+          { "id": "b", "image": "v5b-walk", "impacts": { "R": 1, "O": 1 } },
+          { "id": "c", "image": "v5c-sport", "impacts": { "E": 1.5, "R": 1 } },
+          { "id": "d", "image": "v5d-extreme", "impacts": { "O": 1.5, "E": 1, "R": 0.5 } }
+        ]
       }
     ],
     "context": [

@@ -48,7 +48,7 @@ export const useTestStore = create<TestState>()(
       setLocale: (locale) => set({ locale }),
 
       currentStep: 0,
-      totalSteps: 27, // 10 OCEAN + 12 Hobby + 3 Visual + 2 Context
+      totalSteps: 29, // 10 OCEAN + 12 Hobby + 5 Visual + 2 Context
       answers: [],
       scores: { ...initialScores },
       context: { ...initialContext },

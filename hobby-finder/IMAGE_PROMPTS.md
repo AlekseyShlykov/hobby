@@ -111,7 +111,7 @@ Soft watercolor: neat folders and checklist in muted indigo and grey-lavender. C
 
 ---
 
-## 4. VISUAL CHOICE IMAGES (12 images — 4 per question × 3 questions)
+## 4. VISUAL CHOICE IMAGES (20 images — 4 per question × 5 questions)
 
 ### V1: Social Energy
 
@@ -191,6 +191,58 @@ Dreamy watercolor: screens and devices in powder blue and lavender. Cream paper.
 Soft watercolor: stage with spotlight as soft wash, audience as gentle shapes. Cream background. Dreamy, theatrical. 400x400px, square, watercolor.
 ```
 
+### V4: Work / Learning Style
+
+#### v4a-solo.png (400x400px)
+**Prompt**:
+```
+Watercolor illustration: single figure at a desk with book and lamp in soft mint and lavender. Cream/ivory background. Focused, quiet solitude. Gentle bleeds, dreamy. 400x400px, square, watercolor.
+```
+
+#### v4b-pair.png
+**Prompt**:
+```
+Dreamy watercolor: two figures side by side at a table, sharing a book or project in soft teal and sage. Cream paper. Warm, collaborative. Soft edges only. 400x400px, square, watercolor.
+```
+
+#### v4c-team.png
+**Prompt**:
+```
+Soft watercolor: small group of 3–4 figures around a table with papers and ideas in powder blue and lavender. Cream background. Teamwork, friendly. Airy composition. 400x400px, square, watercolor.
+```
+
+#### v4d-leader.png
+**Prompt**:
+```
+Watercolor style: one figure slightly forward, others as soft shapes behind in warm peach and amber. Cream paper. Confident but gentle leadership. Dreamy. 400x400px, square, watercolor.
+```
+
+### V5: Free-Time Energy
+
+#### v5a-meditate.png (400x400px)
+**Prompt**:
+```
+Dreamy watercolor: seated figure in calm pose, soft candle or plant, muted sage and lavender. Cream/ivory background. Peaceful, zen. Minimal elements, lots of white space. 400x400px, square, watercolor.
+```
+
+#### v5b-walk.png
+**Prompt**:
+```
+Soft watercolor: figure on a path through gentle hills or park in muted blue-grey and sage. Cream paper. Leisurely, contemplative. Dreamy atmosphere. 400x400px, square, watercolor.
+```
+
+#### v5c-sport.png
+**Prompt**:
+```
+Watercolor illustration: runner or cyclist in motion as soft dynamic shapes, powder blue and mint. Cream background. Energetic but soft. 400x400px, square, watercolor.
+```
+
+#### v5d-extreme.png
+**Prompt**:
+```
+Dreamy watercolor: mountain peak or paraglider as soft shapes in lavender and peach. Cream paper. Adventurous, uplifting. No harsh lines. 400x400px, square, watercolor.
+```
+
 ---
 
 ## 5. CONTEXT IMAGES (2 images)
@@ -229,4 +281,4 @@ Soft watercolor: wallet and coins in warm peach and gold washes. Cream backgroun
 
 ---
 
-**Итого для текущего приложения**: 1 hero + 12 RIASEC + 12 visual + 2 context = **27 изображений** (в первом этапе — OCEAN — картинки отключены, только UI).
+**Итого для текущего приложения**: 1 hero + 12 RIASEC + 20 visual + 2 context = **35 изображений** (в первом этапе — OCEAN — картинки отключены, только UI).

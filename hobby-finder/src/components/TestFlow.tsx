@@ -9,7 +9,7 @@ import Results from './Results';
 import testConfig from '@/data/test-config.json';
 import type { LikertQuestion as LikertQ, VisualQuestion as VisualQ, ContextQuestion as ContextQ, UserContext } from '@/types';
 
-// Test structure: 10 OCEAN + 12 Hobby + 3 Visual + 2 Context = 27 questions
+// Test structure: 10 OCEAN + 12 Hobby + 5 Visual + 2 Context = 29 questions
 
 export default function TestFlow() {
   const { currentStep, isTestComplete } = useTestStore();
