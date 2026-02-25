@@ -16,14 +16,15 @@ export default function Welcome() {
       </div>
 
       <div className="max-w-xl w-full text-center space-y-10">
-        <div className="relative">
+        <div className="relative w-full max-w-xl mx-auto aspect-[400/250]">
           <PlaceholderImage
             name="hero-hobbies"
             width={400}
             height={250}
-            className="mx-auto opacity-90"
+            fill
+            className="absolute inset-0 opacity-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent pointer-events-none" />
         </div>
 
         <div className="space-y-5">

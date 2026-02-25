@@ -7,6 +7,8 @@ interface PlaceholderImageProps {
   name: string;
   width?: number;
   height?: number;
+  /** When true, the image container fills the parent (100% width/height). Use inside aspect-square or fixed-size containers. */
+  fill?: boolean;
   className?: string;
 }
 
@@ -146,6 +148,7 @@ export default function PlaceholderImage({
   name,
   width = 400,
   height = 300,
+  fill = false,
   className = '',
 }: PlaceholderImageProps) {
   const gradient = getGradient(name);
@@ -167,17 +170,16 @@ export default function PlaceholderImage({
 
   const imagePath = getImagePath(name);
 
+  const containerStyle = fill
+    ? { width: '100%', height: '100%', borderRadius: '1rem' as const }
+    : { width: '100%', height, maxWidth: width, borderRadius: '1rem' as const };
+
   // If real image exists and loaded successfully, show it
   if (!imageError) {
     return (
       <div
         className={`relative overflow-hidden ${className}`}
-        style={{
-          width: '100%',
-          height: height,
-          maxWidth: width,
-          borderRadius: '1rem',
-        }}
+        style={containerStyle}
       >
         <Image
           src={imagePath}
@@ -195,13 +197,7 @@ export default function PlaceholderImage({
   return (
     <div
       className={`relative flex items-center justify-center overflow-hidden ${className}`}
-      style={{
-        width: '100%',
-        height: height,
-        background: `linear-gradient(135deg, ${gradient.from}, ${gradient.to})`,
-        maxWidth: width,
-        borderRadius: '1rem',
-      }}
+      style={{ ...containerStyle, background: `linear-gradient(135deg, ${gradient.from}, ${gradient.to})` }}
     >
       {/* Subtle overlay pattern for depth */}
       <div 

@@ -40,14 +40,13 @@ export default function ContextQuestion({ question, contextField }: Props) {
         <ProgressBar />
 
         <div className="space-y-8">
-          <div className="relative rounded-2xl overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
+          <div className="relative w-full aspect-[10/3] rounded-2xl overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
             <PlaceholderImage
               name={question.image}
-              width={600}
-              height={180}
+              fill
               className="w-full opacity-60"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-secondary)] to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-secondary)] to-transparent pointer-events-none" />
           </div>
 
           <h2 className="text-2xl md:text-3xl font-semibold text-center leading-relaxed" style={{ color: 'var(--text-primary)' }}>

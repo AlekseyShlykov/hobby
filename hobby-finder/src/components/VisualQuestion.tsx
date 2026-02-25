@@ -59,7 +59,7 @@ export default function VisualQuestion({ question }: Props) {
               >
                 <PlaceholderImage
                   name={option.image}
-                  height={240}
+                  fill
                   className="w-full h-full opacity-80 group-hover:opacity-100 transition-opacity"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-violet-900/10 to-transparent" />
