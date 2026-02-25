@@ -464,7 +464,7 @@
     ],
     "context": [
       {
-        "id": "c1",
+        "id": "ctx_time",
         "text": {
           "en": "How much time can you dedicate to a hobby per week?",
           "ru": "Сколько времени ты готов уделять хобби в неделю?",
@@ -479,7 +479,7 @@
         ]
       },
       {
-        "id": "c2",
+        "id": "ctx_budget",
         "text": {
           "en": "What's a comfortable hobby budget for you?",
           "ru": "Какой бюджет на хобби для тебя комфортен?",
