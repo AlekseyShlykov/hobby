@@ -17,7 +17,11 @@ import testConfig from '@/data/test-config.json';
 import type { Hobby, OceanTrait } from '@/types';
 
 const traitOrder: OceanTrait[] = ['O', 'C', 'E', 'A', 'N'];
+// Axis ticks for labels (2,4,6,8,10)
 const radiusTicks = [2, 4, 6, 8, 10].map((value, index) => ({ value, coordinate: value, index }));
+// Concentric grid circles: scale 2,4,6,8,10 to pixel radii (chart height 300, outerRadius ~80% of half = 120)
+const GRID_MAX_R = 120;
+const gridRadii = [2, 4, 6, 8, 10].map((v) => (v / 10) * GRID_MAX_R);
 
 export default function Results() {
   const { locale, scores, context, answers, resetTest } = useTestStore();
@@ -95,7 +99,7 @@ export default function Results() {
             </h3>
             <ResponsiveContainer width="100%" height={300}>
               <RadarChart data={oceanData}>
-                <PolarGrid stroke="rgba(107, 95, 122, 0.25)" />
+                <PolarGrid stroke="rgba(107, 95, 122, 0.25)" gridType="circle" polarRadius={gridRadii} />
                 <PolarAngleAxis
                   dataKey="trait"
                   tick={{ fontSize: 12, fill: 'var(--text-secondary)' }}
@@ -125,7 +129,7 @@ export default function Results() {
             </h3>
             <ResponsiveContainer width="100%" height={300}>
               <RadarChart data={riasecData}>
-                <PolarGrid stroke="rgba(107, 95, 122, 0.25)" />
+                <PolarGrid stroke="rgba(107, 95, 122, 0.25)" gridType="circle" polarRadius={gridRadii} />
                 <PolarAngleAxis
                   dataKey="trait"
                   tick={{ fontSize: 12, fill: 'var(--text-secondary)' }}
