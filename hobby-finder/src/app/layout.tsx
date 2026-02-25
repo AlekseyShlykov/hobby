@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   description:
     "Take a 5-minute personality test and discover hobbies that match who you are",
   metadataBase: metadataBaseUrl,
+  icons: {
+    icon: basePath ? `${basePath}/favicon.png` : "/favicon.png",
+  },
   openGraph: {
     title: "Hobby Finder - Find Your Perfect Hobby",
     description:
