@@ -1,0 +1,165 @@
+{
+  "ocean": {
+    "O": {
+      "high": {
+        "title": { "en": "Explorer of New Horizons", "ru": "Исследователь новых горизонтов", "fr": "Explorateur de Nouveaux Horizons" },
+        "description": {
+          "en": "You have a rich imagination and a drive for novelty. Routine exhausts you — you need fresh experiences and room to experiment. You're naturally curious and drawn to abstract thinking, art, and unconventional ideas. You likely appreciate beauty in various forms and enjoy exploring different cultures, philosophies, or creative expressions. You'll thrive with hobbies where you can create, explore, and constantly discover something new. Traditional approaches may feel limiting to you — you need space to innovate and express your unique perspective.",
+          "ru": "Ты обладаешь богатым воображением и тягой к новому. Рутина тебя утомляет — тебе нужны свежие впечатления и возможность экспериментировать. Ты от природы любознателен и тянешься к абстрактному мышлению, искусству и нестандартным идеям. Ты ценишь красоту в разных её проявлениях и любишь изучать разные культуры, философии и творческие направления. Тебе подойдут хобби, где можно творить, исследовать и постоянно открывать новое. Традиционные подходы могут казаться ограничивающими — тебе нужно пространство для инноваций и самовыражения.",
+          "fr": "Vous avez une imagination riche et un attrait pour la nouveauté. La routine vous épuise — vous avez besoin d'expériences fraîches et d'espace pour expérimenter. Vous êtes naturellement curieux et attiré par la pensée abstraite, l'art et les idées non conventionnelles. Vous appréciez probablement la beauté sous diverses formes et aimez explorer différentes cultures, philosophies ou expressions créatives. Les hobbies créatifs et exploratoires vous conviendront parfaitement."
+        }
+      },
+      "medium": {
+        "title": { "en": "Balance of Stability and Novelty", "ru": "Баланс стабильности и новизны", "fr": "Équilibre entre Stabilité et Nouveauté" },
+        "description": {
+          "en": "You know how to blend the familiar with the new. Fresh ideas interest you, but you don't dive in headfirst. You can appreciate both traditional and innovative approaches, adapting based on the situation. This flexibility is a strength — you're open to new experiences while maintaining a sense of grounding. You can enjoy creative pursuits without needing constant novelty, finding satisfaction in both exploring new territory and deepening existing skills.",
+          "ru": "Ты умеешь сочетать привычное с новым. Тебе интересны свежие идеи, но ты не бросаешься в них с головой. Ты ценишь как традиционные, так и инновационные подходы, адаптируясь в зависимости от ситуации. Эта гибкость — твоя сила: ты открыт новому опыту, сохраняя при этом чувство стабильности. Ты можешь наслаждаться творчеством без постоянной потребности в новизне.",
+          "fr": "Vous savez mélanger le familier avec le nouveau. Les idées fraîches vous intéressent sans vous submerger. Vous pouvez apprécier les approches traditionnelles et innovantes, en vous adaptant selon la situation. Cette flexibilité est une force — vous êtes ouvert aux nouvelles expériences tout en gardant un ancrage."
+        }
+      },
+      "low": {
+        "title": { "en": "Appreciator of the Proven", "ru": "Ценитель проверенного", "fr": "Amateur de l'Éprouvé" },
+        "description": {
+          "en": "You prefer the reliable and familiar. Deep immersion in one topic brings satisfaction rather than constantly jumping between interests. You value practical, concrete approaches over abstract theories. This grounded perspective helps you develop true expertise and mastery. You're not easily distracted by passing trends and can commit to long-term skill development. Hobbies with clear structure where you can gradually master something specific will suit you perfectly.",
+          "ru": "Ты предпочитаешь надёжное и понятное. Глубокое погружение в одну тему приносит удовольствие, а не постоянное переключение между интересами. Ты ценишь практичные, конкретные подходы больше абстрактных теорий. Эта приземлённость помогает развивать настоящую экспертизу и мастерство. Тебя не легко отвлечь преходящими трендами, и ты способен на долгосрочное развитие навыков.",
+          "fr": "Vous préférez ce qui est fiable et familier. L'immersion profonde dans un sujet vous satisfait plutôt que de sauter constamment entre les intérêts. Vous valorisez les approches pratiques et concrètes. Cette perspective ancrée vous aide à développer une véritable expertise et maîtrise."
+        }
+      }
+    },
+    "C": {
+      "high": {
+        "title": { "en": "Master of Organization", "ru": "Мастер организации", "fr": "Maître de l'Organisation" },
+        "description": {
+          "en": "You know how to set goals and achieve them. Discipline, planning, and following through are your strengths. You're reliable, organized, and take your commitments seriously. People can count on you to deliver what you promise. You likely prefer having a clear plan and feel satisfied when checking items off your list. This trait makes you excellent at hobbies requiring consistent practice and progressive skill building. You thrive with clear milestones and measurable achievements.",
+          "ru": "Ты умеешь ставить цели и достигать их. Дисциплина, планирование и доведение дел до конца — твои сильные стороны. Ты надёжен, организован и серьёзно относишься к своим обязательствам. На тебя можно положиться. Скорее всего, ты предпочитаешь иметь чёткий план и испытываешь удовлетворение, вычёркивая пункты из списка. Эта черта делает тебя отличным в хобби, требующих регулярной практики и постепенного развития навыков.",
+          "fr": "Vous savez fixer des objectifs et les atteindre. La discipline, la planification et le suivi sont vos forces. Vous êtes fiable, organisé et prenez vos engagements au sérieux. Les gens peuvent compter sur vous. Les hobbies structurés avec des étapes claires vous conviendront parfaitement."
+        }
+      },
+      "medium": {
+        "title": { "en": "Flexible Planner", "ru": "Гибкий планировщик", "fr": "Planificateur Flexible" },
+        "description": {
+          "en": "You can organize yourself when needed, but don't make planning an end in itself. You know when to be disciplined and when to go with the flow. This adaptability serves you well — you can commit to regular practice when motivated while also enjoying spontaneous activities. Both structured hobbies with progression systems and free-form creative pursuits can work for you depending on your mood and goals.",
+          "ru": "Ты способен организовать себя, когда нужно, но не превращаешь планирование в самоцель. Ты знаешь, когда быть дисциплинированным, а когда плыть по течению. Эта адаптивность хорошо тебе служит — ты можешь регулярно практиковаться при достаточной мотивации, но также наслаждаться спонтанными активностями.",
+          "fr": "Vous pouvez vous organiser quand c'est nécessaire, mais sans faire de la planification une fin en soi. Vous savez quand être discipliné et quand vous laisser porter. Les hobbies structurés et spontanés peuvent vous convenir selon votre humeur et vos objectifs."
+        }
+      },
+      "low": {
+        "title": { "en": "Free Spirit", "ru": "Свободный художник", "fr": "Esprit Libre" },
+        "description": {
+          "en": "Rigid schedules aren't for you. You prefer to act on inspiration and feel constrained by too much structure. You're spontaneous and flexible, adapting easily to changing circumstances. While this might mean less predictability, it also brings creativity and the ability to seize unexpected opportunities. Activities without strict rules, where you can engage when you feel like it and follow your natural rhythms, suit you best. Look for hobbies that allow for improvisation and personal expression.",
+          "ru": "Жёсткие рамки — не для тебя. Ты предпочитаешь действовать по вдохновению и чувствуешь себя скованным при избытке структуры. Ты спонтанен и гибок, легко адаптируешься к меняющимся обстоятельствам. Хотя это может означать меньше предсказуемости, это также приносит креативность и способность хвататься за неожиданные возможности. Тебе подойдут активности без строгих правил, где можно участвовать по настроению.",
+          "fr": "Les cadres rigides ne sont pas pour vous. Vous préférez agir selon l'inspiration et vous sentez contraint par trop de structure. Vous êtes spontané et flexible. Les activités sans règles strictes, où vous pouvez vous engager selon votre humeur, vous conviennent le mieux."
+        }
+      }
+    },
+    "E": {
+      "high": {
+        "title": { "en": "Social Energy", "ru": "Энергия общения", "fr": "Énergie Sociale" },
+        "description": {
+          "en": "You draw strength from contact with people. Company, discussions, shared activities — all of this energizes you. You're likely outgoing, talkative, and enjoy being around others. You probably feel most alive in social settings and may find solitary activities draining after a while. Group activities, team sports, clubs, and community events are your natural habitat. Hobbies with a strong social component suit you perfectly — look for activities where you can connect, collaborate, and share experiences with others.",
+          "ru": "Ты черпаешь силы в контактах с людьми. Компания, обсуждения, совместные активности — всё это заряжает тебя энергией. Скорее всего, ты общителен, разговорчив и любишь находиться среди людей. Ты чувствуешь себя наиболее живым в социальных ситуациях. Групповые активности, командные виды спорта, клубы и общественные мероприятия — твоя естественная среда. Тебе идеально подойдут хобби с сильным социальным компонентом.",
+          "fr": "Vous puisez votre force dans le contact avec les gens. La compagnie, les discussions, les activités partagées — tout cela vous énergise. Vous êtes probablement extraverti, bavard et aimez être entouré. Les hobbies avec une forte composante sociale vous conviendront parfaitement."
+        }
+      },
+      "medium": {
+        "title": { "en": "Social Balance", "ru": "Социальный баланс", "fr": "Équilibre Social" },
+        "description": {
+          "en": "You feel comfortable both in company and alone. This gives you freedom of choice — both group and individual hobbies work for you. You can enjoy a lively party and equally appreciate quiet time with a book. This versatility is valuable — you're not dependent on others for fulfillment but can also fully participate in social activities. You can choose hobbies based on other factors, knowing that social or solitary aspects won't be a barrier.",
+          "ru": "Ты комфортно чувствуешь себя и в компании, и наедине с собой. Это даёт свободу выбора — тебе подходят как групповые, так и индивидуальные хобби. Ты можешь наслаждаться шумной вечеринкой и одинаково ценить тихое время с книгой. Эта универсальность ценна — ты не зависишь от других для самореализации, но можешь полноценно участвовать в социальных активностях.",
+          "fr": "Vous vous sentez à l'aise en compagnie comme seul. Cela vous donne la liberté de choix — les hobbies de groupe et individuels vous conviennent. Vous pouvez profiter d'une fête animée et apprécier également le calme avec un livre."
+        }
+      },
+      "low": {
+        "title": { "en": "Strength in Stillness", "ru": "Сила в тишине", "fr": "Force dans le Silence" },
+        "description": {
+          "en": "You recharge in solitude or with a close circle. Social interactions, especially in large groups, can be draining. This isn't shyness — it's how you process energy. You likely prefer deep conversations with a few people over small talk with many. Your inner world is rich and you're comfortable with your own company. Hobbies you can pursue alone or in a small group of like-minded people suit you. Look for activities that allow for quiet focus and don't require constant social interaction.",
+          "ru": "Ты восстанавливаешь энергию в уединении или в узком кругу близких. Социальные взаимодействия, особенно в больших группах, могут истощать. Это не застенчивость — так ты перерабатываешь энергию. Скорее всего, ты предпочитаешь глубокие разговоры с немногими, чем поверхностные беседы со многими. Твой внутренний мир богат, и тебе комфортно наедине с собой. Тебе подойдут хобби для уединённых занятий или в небольшой группе единомышленников.",
+          "fr": "Vous rechargez vos batteries dans la solitude ou avec un cercle proche. Les interactions sociales, surtout en grands groupes, peuvent être épuisantes. Ce n'est pas de la timidité — c'est comment vous gérez l'énergie. Les hobbies solitaires ou en petit groupe vous conviennent."
+        }
+      }
+    },
+    "A": {
+      "high": {
+        "title": { "en": "The Harmonizer", "ru": "Душа компании", "fr": "L'Harmonisateur" },
+        "description": {
+          "en": "Harmony in relationships matters more than winning arguments. Helping others brings you genuine pleasure. You're naturally empathetic, cooperative, and tend to see the best in people. You value trust, honesty, and altruism. Conflict makes you uncomfortable, and you often act as a peacemaker. This warmth and consideration make you excellent in collaborative environments. Hobbies related to care, cooperation, teamwork, or volunteering suit you. You'll thrive in supportive communities rather than competitive ones.",
+          "ru": "Гармония в отношениях для тебя важнее победы в споре. Помощь другим приносит искреннее удовольствие. Ты от природы эмпатичен, склонен к сотрудничеству и видишь в людях лучшее. Ты ценишь доверие, честность и альтруизм. Конфликты тебе неприятны, и ты часто выступаешь миротворцем. Эта теплота делает тебя отличным в командной работе. Тебе подойдут хобби, связанные с заботой, сотрудничеством или волонтёрством.",
+          "fr": "L'harmonie dans les relations compte plus que de gagner. Aider les autres vous procure un réel plaisir. Vous êtes naturellement empathique, coopératif et voyez le meilleur chez les gens. Les hobbies liés à l'entraide, la coopération ou le bénévolat vous conviennent."
+        }
+      },
+      "medium": {
+        "title": { "en": "Healthy Balance", "ru": "Здоровый баланс", "fr": "Équilibre Sain" },
+        "description": {
+          "en": "You know how to cooperate but don't forget your own interests. You can be supportive and helpful while also standing firm when needed. This balance allows you to work well with others without losing yourself in the process. Both team and competitive hobbies work for you — you can collaborate when it serves the goal and compete when that's more appropriate.",
+          "ru": "Ты умеешь сотрудничать, но не забываешь о своих интересах. Ты можешь быть поддерживающим и helpful, но также твёрдо стоять на своём когда нужно. Этот баланс позволяет хорошо работать с другими, не теряя себя. Тебе подходят как командные, так и соревновательные хобби.",
+          "fr": "Vous savez coopérer mais n'oubliez pas vos propres intérêts. Vous pouvez être solidaire tout en restant ferme quand c'est nécessaire. Les hobbies d'équipe et compétitifs vous conviennent."
+        }
+      },
+      "low": {
+        "title": { "en": "Independent Player", "ru": "Независимый игрок", "fr": "Joueur Indépendant" },
+        "description": {
+          "en": "You value your position and aren't inclined to adjust to others. Competition motivates you, and you're not afraid to challenge others or stand your ground. You're skeptical and analytical, preferring to evaluate ideas critically rather than accepting them at face value. This independence of thought is valuable — you won't be swayed by groupthink. Hobbies where you can express yourself, compete, or work independently suit you well. You might prefer activities with clear winners or objective measures of success.",
+          "ru": "Ты ценишь свою позицию и не склонен подстраиваться под других. Конкуренция тебя мотивирует, и ты не боишься бросать вызов или отстаивать свою точку зрения. Ты скептичен и аналитичен, предпочитаешь критически оценивать идеи. Эта независимость мышления ценна — тебя не сбить групповым мнением. Тебе подойдут хобби, где можно самовыражаться, соревноваться или работать независимо.",
+          "fr": "Vous valorisez votre position et n'êtes pas enclin à vous adapter aux autres. La compétition vous motive. Vous êtes sceptique et analytique. Les hobbies où vous pouvez vous exprimer, concourir ou travailler indépendamment vous conviennent."
+        }
+      }
+    },
+    "N": {
+      "high": {
+        "title": { "en": "Depth of Feeling", "ru": "Глубина переживаний", "fr": "Profondeur des Émotions" },
+        "description": {
+          "en": "You feel life intensely. This gives depth of perception but sometimes brings extra worries. You're more sensitive to stress, criticism, and negative events than others. However, this sensitivity also means you experience positive emotions deeply. You may be prone to anxiety, mood swings, or feeling overwhelmed. Hobbies that relieve stress, provide emotional outlet, or help you process feelings are beneficial. Consider activities like yoga, meditation, art therapy, journaling, or gentle physical exercise.",
+          "ru": "Ты остро чувствуешь жизнь. Это даёт глубину восприятия, но иногда приносит лишние переживания. Ты более чувствителен к стрессу, критике и негативным событиям, чем другие. Однако эта чувствительность означает и глубокое переживание позитивных эмоций. Тебе помогут хобби, снимающие стресс, дающие эмоциональный выход или помогающие обработать чувства — йога, медитация, арт-терапия, ведение дневника.",
+          "fr": "Vous ressentez la vie intensément. Cela donne de la profondeur mais apporte parfois des soucis supplémentaires. Vous êtes plus sensible au stress et aux critiques. Les hobbies qui soulagent le stress ou permettent l'expression émotionnelle vous aideront — yoga, méditation, art-thérapie."
+        }
+      },
+      "medium": {
+        "title": { "en": "Emotional Flexibility", "ru": "Эмоциональная гибкость", "fr": "Flexibilité Émotionnelle" },
+        "description": {
+          "en": "You experience ups and downs but know how to handle them. You're not immune to stress or negative emotions, but they don't overwhelm you. You have developed coping mechanisms and can bounce back from setbacks. This emotional resilience opens up a wide range of hobbies — you can handle both challenging activities and relaxing ones without being defined by either.",
+          "ru": "Ты переживаешь взлёты и падения, но умеешь с ними справляться. Ты не защищён от стресса или негативных эмоций, но они тебя не захлёстывают. Ты выработал механизмы совладания и можешь восстанавливаться после неудач. Эта эмоциональная устойчивость открывает широкий спектр хобби.",
+          "fr": "Vous vivez des hauts et des bas mais savez les gérer. Vous n'êtes pas immunisé contre le stress, mais il ne vous submerge pas. Cette résilience émotionnelle ouvre un large éventail de hobbies."
+        }
+      },
+      "low": {
+        "title": { "en": "Emotional Stability", "ru": "Эмоциональная устойчивость", "fr": "Stabilité Émotionnelle" },
+        "description": {
+          "en": "You handle stress calmly and don't get easily upset. Setbacks don't derail you — you stay composed under pressure and recover quickly from negative experiences. This emotional stability is a significant advantage in challenging hobbies. You can take on activities that involve risk, competition, or steep learning curves without being discouraged by initial failures. Hobbies requiring composure, focus under pressure, or ones where setbacks are part of mastery will suit you well.",
+          "ru": "Ты спокойно переносишь стресс и не расстраиваешься по пустякам. Неудачи тебя не выбивают из колеи — ты сохраняешь самообладание под давлением и быстро восстанавливаешься. Эта эмоциональная стабильность — значительное преимущество в сложных хобби. Ты можешь браться за активности с риском, соревнованием или крутой кривой обучения, не пугаясь начальных неудач.",
+          "fr": "Vous gérez le stress calmement et ne vous énervez pas facilement. Les revers ne vous déstabilisent pas. Cette stabilité émotionnelle est un avantage significatif. Les hobbies exigeant du sang-froid ou où les échecs font partie de la maîtrise vous conviendront."
+        }
+      }
+    }
+  },
+  "ui": {
+    "welcome": {
+      "title": { "en": "Find Your Perfect Hobby", "ru": "Найди своё хобби", "fr": "Trouvez votre hobby idéal" },
+      "subtitle": { "en": "Take a 5-minute test and discover hobbies that match your personality", "ru": "Пройди тест за 5 минут и узнай, какие увлечения подходят тебе", "fr": "Faites un test de 5 minutes et découvrez les loisirs qui vous correspondent" },
+      "start": { "en": "Start Test", "ru": "Начать тест", "fr": "Commencer" }
+    },
+    "likert": {
+      "stronglyDisagree": { "en": "Strongly disagree", "ru": "Совсем не про меня", "fr": "Pas du tout d'accord" },
+      "disagree": { "en": "Disagree", "ru": "Скорее не про меня", "fr": "Pas d'accord" },
+      "neutral": { "en": "Neutral", "ru": "Нейтрально", "fr": "Neutre" },
+      "agree": { "en": "Agree", "ru": "Скорее про меня", "fr": "D'accord" },
+      "stronglyAgree": { "en": "Strongly agree", "ru": "Точно про меня", "fr": "Tout à fait d'accord" }
+    },
+    "results": {
+      "title": { "en": "Your Results", "ru": "Твои результаты", "fr": "Vos résultats" },
+      "personality": { "en": "Your Personality", "ru": "Твоя личность", "fr": "Votre personnalité" },
+      "interests": { "en": "Your Interests", "ru": "Твои интересы", "fr": "Vos intérêts" },
+      "hobbies": { "en": "Recommended Hobbies", "ru": "Рекомендованные хобби", "fr": "Hobbies recommandés" },
+      "whyFits": { "en": "Why it fits you", "ru": "Почему подходит", "fr": "Pourquoi ça vous convient" },
+      "share": { "en": "Share", "ru": "Поделиться", "fr": "Partager" },
+      "retake": { "en": "Retake Test", "ru": "Пройти заново", "fr": "Refaire le test" },
+      "findNearby": { "en": "Find These Hobbies Near Me", "ru": "Найти эти хобби рядом", "fr": "Trouver ces hobbies près de moi" },
+      "loadingLocation": { "en": "Getting your location...", "ru": "Определяем местоположение...", "fr": "Localisation en cours..." },
+      "locationError": { "en": "Could not get location. Please enable location services.", "ru": "Не удалось определить местоположение. Включите геолокацию.", "fr": "Impossible d'obtenir la localisation. Activez les services de localisation." },
+      "mapTitle": { "en": "Places for Your Hobbies Nearby", "ru": "Места для твоих хобби поблизости", "fr": "Lieux pour vos hobbies à proximité" }
+    },
+    "progress": {
+      "question": { "en": "Question", "ru": "Вопрос", "fr": "Question" },
+      "of": { "en": "of", "ru": "из", "fr": "sur" }
+    }
+  }
+}
