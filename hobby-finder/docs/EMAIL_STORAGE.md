@@ -1,57 +1,44 @@
-# Куда складывать почты и как отправлять письма
+# Рассылка с обновлениями: сохранение почт в Google Таблицу
 
-**Важно:** Кнопка «Получить полный результат на почту» и сохранение в Airtable/Google Таблицу работают **только когда приложение запущено с сервером**: `npm run dev` или `npm run build && npm run start`. Если вы открываете собранный статический сайт (например, папку `out/` или GitHub Pages без бэкенда), API не существует — запрос уйдёт в пустоту, в Airtable ничего не попадёт и письмо не отправится. Для локальной проверки всегда запускайте `npm run dev` и открывайте указанный в терминале URL (например http://localhost:3000).
-
----
-
-## Сохранение списка почт
-
-Можно использовать один или несколько вариантов.
-
-### 1. SQLite (по умолчанию)
-
-Ничего настраивать не нужно. Почты пишутся в `data/results.db`, таблица `full_result_emails`.  
-Список: **GET** `/api/full-result-emails`.
-
-Минус: на serverless (Vercel, Netlify и т.п.) файловая БД может не сохраняться между запросами. Тогда используйте Airtable или Google Таблицу.
+Кнопка **«Подписаться на рассылку с обновлениями»** сохраняет email в Google Таблицу. Работает и на **GitHub Pages** (без своего сервера), и при запуске с сервером.
 
 ---
 
-### 2. Airtable
+## Текущий деплой Apps Script
 
-1. Создайте базу в [Airtable](https://airtable.com).
-2. В базе создайте таблицу (например, **Emails**).
-3. Добавьте два поля:
-   - **Email** — тип Single line text
-   - **Created** — тип Date (или Single line text)
-4. [Создайте токен](https://airtable.com/create/tokens): scope — `data.records:write`, доступ к вашей базе.
-5. В `.env` добавьте:
+- **Deployment ID:** `AKfycbzMaPy-szSq71V4ZJ78b2CL_yccN6WswRbVx8MStNwGyctkC-hKgkqhoa80r_m7rt6I`
+- **URL веб-приложения:** `https://script.google.com/macros/s/AKfycbzMaPy-szSq71V4ZJ78b2CL_yccN6WswRbVx8MStNwGyctkC-hKgkqhoa80r_m7rt6I/exec`
 
-```env
-AIRTABLE_API_KEY=patxxxxxxxxxxxx
-AIRTABLE_BASE_ID=appxxxxxxxxxxxx
-AIRTABLE_TABLE_NAME=Emails
-```
-
-- **Base ID** — в адресе базы: `https://airtable.com/appXXXXXXXXXXXXXX/...` (часть `app...`).
-- **Table name** — имя таблицы по-английски (как в интерфейсе), если не задано, используется `Emails`.
-
-Готово. Каждая отправка формы будет добавлять строку в Airtable.
+Этот URL нужно указать в секрете **GOOGLE_SHEETS_WEBHOOK_URL** (для GitHub Pages) и/или в `.env` (для локального запуска) — см. раздел «Где указать URL» ниже.
 
 ---
 
-### 3. Google Таблица (Google Sheets)
+## Настройка за 5 минут
 
-1. Создайте новую [Google Таблицу](https://sheets.google.com).
-2. В первой строке задайте заголовки, например: **Email** | **Created**.
-3. Меню **Расширения** → **Apps Script**. Удалите код в редакторе и вставьте:
+### 1. Google Таблица
+
+1. Создайте [Google Таблицу](https://sheets.google.com).
+2. В первой строке задайте заголовки: **Email** | **Created** (или **Дата**).
+
+### 2. Apps Script
+
+3. В таблице: **Расширения** → **Apps Script**. Удалите код в редакторе и вставьте (скрипт принимает и JSON из API, и form-encoded из браузера на Pages):
 
 ```javascript
 function doPost(e) {
   try {
-    const data = JSON.parse(e.postData.contents);
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    sheet.appendRow([data.email || '', data.createdAt || new Date().toISOString()]);
+    var email = '';
+    var createdAt = new Date().toISOString();
+    if (e.postData && e.postData.contents) {
+      var data = JSON.parse(e.postData.contents);
+      email = data.email || '';
+      createdAt = data.createdAt || createdAt;
+    } else if (e.parameter) {
+      email = e.parameter.email || '';
+      createdAt = e.parameter.createdAt || createdAt;
+    }
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    sheet.appendRow([email, createdAt]);
     return ContentService.createTextOutput(JSON.stringify({ success: true }))
       .setMimeType(ContentService.MimeType.JSON);
   } catch (err) {
@@ -61,32 +48,28 @@ function doPost(e) {
 }
 ```
 
-4. Сохраните (Ctrl+S), нажмите **Развернуть** → **Новое развёртывание** → тип **Веб-приложение**.
-5. Укажите: **Выполнять от имени** — я, **У кого есть доступ** — **Все** (иначе запросы с вашего сайта не пройдут).
-6. Нажмите **Развернуть**, скопируйте **URL веб-приложения** (вид: `https://script.google.com/macros/s/.../exec`).
-7. В `.env` добавьте:
+4. Сохраните (Ctrl+S).
+5. **Развернуть** → **Новое развёртывание** → тип **Веб-приложение**.
+6. Параметры: **Выполнять от имени** — я, **У кого есть доступ** — **Все**.
+7. Нажмите **Развернуть** и скопируйте **URL веб-приложения** (например `https://script.google.com/macros/s/xxxx/exec`).
+
+### 3. Где указать URL
+
+**Для GitHub Pages:**  
+В репозитории: **Settings** → **Secrets and variables** → **Actions** → **New repository secret**.  
+Имя: `GOOGLE_SHEETS_WEBHOOK_URL`, значение: вставьте URL веб-приложения из шага 7.  
+При следующем пуше в `main` сборка подхватит секрет, и подписка на сайте будет работать.
+
+**Для локального запуска или Vercel:**  
+В корне `hobby-finder` создайте `.env` и добавьте (или скопируйте из `.env.example`):
 
 ```env
-GOOGLE_SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/ваш_id/exec
+NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/AKfycbzMaPy-szSq71V4ZJ78b2CL_yccN6WswRbVx8MStNwGyctkC-hKgkqhoa80r_m7rt6I/exec
+
+# Опционально, для работы через API (локально / Vercel)
+GOOGLE_SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/AKfycbzMaPy-szSq71V4ZJ78b2CL_yccN6WswRbVx8MStNwGyctkC-hKgkqhoa80r_m7rt6I/exec
 ```
 
-После этого каждая отправка формы будет добавлять строку в таблицу.
+Перезапустите приложение (`npm run dev` или перезапуск на Vercel).
 
----
-
-## Отправка писем на почту (SMTP)
-
-Чтобы по кнопке «Получить полный результат на почту» пользователю уходило письмо с полным отчётом, настройте SMTP в `.env`:
-
-```env
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your@gmail.com
-SMTP_PASS=пароль-приложения
-SMTP_FROM=your@gmail.com
-```
-
-Для Gmail нужен [пароль приложения](https://support.google.com/accounts/answer/185833), не обычный пароль.  
-Для Yandex/Mail.ru включите в настройках ящика доступ по SMTP.
-
-После сохранения `.env` перезапустите приложение.
+Готово. Подписки будут добавляться в таблицу и с GitHub Pages, и при запуске с сервером.

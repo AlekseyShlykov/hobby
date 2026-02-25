@@ -24,9 +24,10 @@ jobs:
     env:
       BASE_PATH: /${{ github.event.repository.name }}
       NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
-      # Origin only so og:image path can be /repo/images/... on GitHub Pages
       NEXT_PUBLIC_SITE_URL: https://${{ github.event.repository.owner.login }}.github.io
       NEXT_PUBLIC_DISABLE_SAVE: "true"
+      # URL веб-приложения Apps Script — подписка на рассылку будет работать на Pages
+      NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL: ${{ secrets.GOOGLE_SHEETS_WEBHOOK_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4

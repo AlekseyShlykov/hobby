@@ -128,6 +128,8 @@ export default function Results() {
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const sheetsUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL;
+
   async function handleEmailSubmit(e: React.FormEvent) {
     e.preventDefault();
     const trimmed = email.trim();
@@ -137,43 +139,42 @@ export default function Results() {
     }
     setEmailError(null);
     setEmailLoading(true);
+    const createdAt = new Date().toISOString();
+
     try {
-      const payload = {
-        email: trimmed,
-        locale,
-        scores,
-        context,
-        oceanData,
-        riasecData,
-        oceanDescriptions: allOceanDescriptions.map((d) => ({
-          traitName: d.traitName,
-          level: d.level,
-          value: d.value,
-          title: d.title,
-          description: d.description,
-        })),
-        recommendations: recommendations.map(({ hobby, score, reasons }) => ({
-          name: hobby.name,
-          description: hobby.description,
-          score,
-          reasons,
-        })),
-      };
-      const res = await fetch('/api/send-full-result/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const contentType = res.headers.get('content-type') || '';
-      const data = contentType.includes('application/json')
-        ? await res.json()
-        : { error: res.status === 404 ? 'API not available (run with server, not static export)' : `HTTP ${res.status}` };
-      if (!res.ok) {
-        console.error('send-full-result failed:', res.status, data);
-        throw new Error(data.error || 'Request failed');
+      if (sheetsUrl) {
+        // Прямой вызов Google Apps Script из браузера (работает на GitHub Pages без своего API)
+        const formBody = new URLSearchParams({ email: trimmed, createdAt });
+        await fetch(sheetsUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formBody,
+        });
+        setEmailSuccess(true);
+        setEmail('');
+      } else {
+        // Вызов через наш API (когда запущено с сервером)
+        const res = await fetch('/api/send-full-result/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: trimmed }),
+        });
+        const contentType = res.headers.get('content-type') || '';
+        const data = contentType.includes('application/json')
+          ? await res.json()
+          : { error: (res.status === 404 || res.status === 405) ? 'STATIC_HOST' : `HTTP ${res.status}` };
+        if (!res.ok) {
+          console.error('newsletter failed:', res.status, data);
+          const staticHostMsg = ui.emailErrorStaticHost?.[locale];
+          throw new Error(
+            (res.status === 404 || res.status === 405) && staticHostMsg
+              ? staticHostMsg
+              : (data.error && data.error !== 'STATIC_HOST' ? data.error : `HTTP ${res.status}`)
+          );
+        }
+        setEmailSuccess(true);
+        setEmail('');
       }
-      setEmailSuccess(true);
-      setEmail('');
     } catch (err) {
       const message = err instanceof Error ? err.message : '';
       setEmailError(message || (ui.emailError?.[locale] ?? 'Failed to send. Try again later.'));
@@ -306,7 +307,7 @@ export default function Results() {
             {allOceanDescriptions.map((desc, i) => (
               <div
                 key={i}
-                className={`pb-8 last:pb-0 transition-all duration-300 ${i >= 2 ? 'select-none pointer-events-none blur-md' : ''}`}
+                className="pb-8 last:pb-0 transition-all duration-300"
                 style={{
                   borderBottom: i < allOceanDescriptions.length - 1 ? '1px solid var(--border)' : 'none',
                 }}
@@ -344,7 +345,7 @@ export default function Results() {
             {recommendations.map(({ hobby, score, reasons }, index) => (
               <div
                 key={hobby.id}
-                className={`rounded-3xl p-6 border transition-all duration-300 ${index >= 2 ? 'select-none pointer-events-none blur-md' : 'hover:scale-[1.01]'}`}
+                className="rounded-3xl p-6 border transition-all duration-300 hover:scale-[1.01]"
                 style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}
               >
                 <div className="flex items-start gap-5">
@@ -400,7 +401,7 @@ export default function Results() {
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            {ui.getFullResultByEmail?.[locale]}
+            {ui.newsletterSubscribe?.[locale]}
           </button>
           <button
             onClick={resetTest}
@@ -411,15 +412,15 @@ export default function Results() {
           </button>
         </div>
 
-        {/* Email form for full result */}
+        {/* Newsletter signup form */}
         {(showEmailForm || emailSuccess) && (
           <div className="rounded-3xl p-8 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
             <h3 className="text-xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-              {ui.getFullResultByEmail?.[locale]}
+              {ui.newsletterSubscribe?.[locale]}
             </h3>
             {emailSuccess ? (
               <p className="text-lg" style={{ color: 'var(--success)' }}>
-                {ui.emailSuccess?.[locale]}
+                {ui.newsletterSuccess?.[locale]}
               </p>
             ) : (
               <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
@@ -439,7 +440,7 @@ export default function Results() {
                   className="px-6 py-3 font-semibold rounded-xl transition-all disabled:opacity-70"
                   style={{ background: 'var(--accent-primary)', color: 'white' }}
                 >
-                  {emailLoading ? (locale === 'ru' ? 'Отправка…' : locale === 'fr' ? 'Envoi…' : 'Sending…') : ui.emailSend?.[locale]}
+                  {emailLoading ? (locale === 'ru' ? 'Подписываем…' : locale === 'fr' ? 'Inscription…' : 'Subscribing…') : ui.emailSend?.[locale]}
                 </button>
               </form>
             )}
