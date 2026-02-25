@@ -176,7 +176,7 @@ export default function Results() {
       setEmail('');
     } catch (err) {
       const message = err instanceof Error ? err.message : '';
-      setEmailError(message || ui.emailError?.[locale] ?? 'Failed to send. Try again later.');
+      setEmailError(message || (ui.emailError?.[locale] ?? 'Failed to send. Try again later.'));
     } finally {
       setEmailLoading(false);
     }
