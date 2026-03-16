@@ -522,16 +522,22 @@ export default function Results() {
               {shareInProgress ? (locale === 'ru' ? 'Готовим…' : locale === 'fr' ? 'Préparation…' : 'Preparing…') : ui.share[locale]}
             </span>
           </button>
-          <button
-            onClick={() => { setShowEmailForm(true); setEmailSuccess(false); setEmailError(null); }}
-            className="px-8 py-4 font-semibold rounded-2xl transition-all duration-300 border hover:scale-[1.02] flex items-center gap-2"
-            style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)', color: 'var(--text-primary)' }}
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            {ui.newsletterSubscribe?.[locale]}
-          </button>
+          <div className="flex items-center justify-center">
+            <div>
+              <p className="mb-2 text-sm text-center" style={{ color: 'var(--text-secondary)' }}>
+                {{
+                  en: 'Subscribe to a newsletter with hobby updates.',
+                  ru: 'Подписаться на рассылку с обновлениями о хобби.',
+                  fr: "S'abonner à la newsletter avec des nouveautés sur les hobbies.",
+                }[locale]}
+              </p>
+              {/* @ts-expect-error Stripe custom element */}
+              <stripe-buy-button
+                buy-button-id="buy_btn_1TBY2wHmo60qmtibaCCCnrm3"
+                publishable-key="pk_live_51TBVjBHmo60qmtibJ9PkDqFH3ii93wyiUoH94j2nAWUqWqTn7nnG4NFHHwdcAn2ybvliOXeTgZ1R5NAasaiW6aZq00px7fwyES"
+              />
+            </div>
+          </div>
           <button
             onClick={resetTest}
             className="px-8 py-4 font-semibold rounded-2xl transition-all duration-300 border hover:scale-[1.02]"
@@ -539,68 +545,6 @@ export default function Results() {
           >
             {ui.retake[locale]}
           </button>
-        </div>
-
-        {/* Newsletter signup form */}
-        {(showEmailForm || emailSuccess) && (
-          <div className="rounded-3xl p-8 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
-            <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>
-              {ui.newsletterSubscribe?.[locale]}
-            </h3>
-            <p className="mb-4 text-base" style={{ color: 'var(--text-secondary)' }}>
-              {ui.newsletterIntro?.[locale]}
-            </p>
-            {emailSuccess ? (
-              <p className="text-lg" style={{ color: 'var(--success)' }}>
-                {ui.newsletterSuccess?.[locale]}
-              </p>
-            ) : (
-              <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => { setEmail(e.target.value); setEmailError(null); }}
-                  placeholder={ui.emailPlaceholder?.[locale] ?? 'Your email'}
-                  className="flex-1 px-4 py-3 rounded-xl border focus:outline-none focus:ring-2"
-                  style={{ background: 'var(--bg-primary)', borderColor: 'var(--border)', color: 'var(--text-primary)' }}
-                  disabled={emailLoading}
-                  autoFocus
-                />
-                <button
-                  type="submit"
-                  disabled={emailLoading}
-                  className="px-6 py-3 font-semibold rounded-xl transition-all disabled:opacity-70"
-                  style={{ background: 'var(--accent-primary)', color: 'white' }}
-                >
-                  {emailLoading ? (locale === 'ru' ? 'Подписываем…' : locale === 'fr' ? 'Inscription…' : 'Subscribing…') : ui.emailSend?.[locale]}
-                </button>
-              </form>
-            )}
-            {emailError && (
-              <p className="mt-2 text-sm" style={{ color: 'var(--error, #ef4444)' }}>{emailError}</p>
-            )}
-          </div>
-        )}
-
-        {/* Stripe Buy Button */}
-        <div className="rounded-3xl p-8 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
-          <div className="text-center mb-4">
-            <h2 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
-              {{ en: 'Support the project', ru: 'Поддержать проект', fr: 'Soutenir le projet' }[locale]}
-            </h2>
-            <p className="mt-2 text-base" style={{ color: 'var(--text-secondary)' }}>
-              {{
-                en: 'Buy a detailed breakdown of your results via Stripe.',
-                ru: 'Купите расширенный разбор результатов через Stripe.',
-                fr: 'Achetez une analyse détaillée de vos résultats via Stripe.',
-              }[locale]}
-            </p>
-          </div>
-          {/* @ts-expect-error Stripe custom element */}
-          <stripe-buy-button
-            buy-button-id="buy_btn_1TBY2wHmo60qmtibaCCCnrm3"
-            publishable-key="pk_live_51TBVjBHmo60qmtibJ9PkDqFH3ii93wyiUoH94j2nAWUqWqTn7nnG4NFHHwdcAn2ybvliOXeTgZ1R5NAasaiW6aZq00px7fwyES"
-          />
         </div>
 
         {/* Find Hobbies Nearby */}
