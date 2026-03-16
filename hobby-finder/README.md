@@ -50,10 +50,10 @@ The app is built as a **static export** and can be hosted on GitHub Pages.
 From the app directory (`hobby-finder/`):
 
 ```bash
-BASE_PATH=/your-repo-name npm run build
+npm run build
 ```
 
-Output is in `out/`. For GitHub Pages, the site will be at `https://<user>.github.io/<your-repo-name>/`.
+Output is in `out/`. The app is configured for root deployment (e.g. custom domain like `https://thefennecbox.com`). The deploy workflow sets `NEXT_PUBLIC_SITE_URL` for production.
 
 ### Notes
 

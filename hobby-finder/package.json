@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "mv src/app/api api_backup 2>/dev/null || true",
     "build": "next build",
+    "postbuild": "mv api_backup src/app/api 2>/dev/null || true",
     "build:gh-pages": "next build",
     "start": "next start",
     "lint": "eslint"
