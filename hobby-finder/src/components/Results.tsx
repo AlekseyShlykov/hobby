@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
+import Script from 'next/script';
 import {
   Radar,
   RadarChart,
@@ -327,6 +328,7 @@ export default function Results() {
 
   return (
     <div className="min-h-screen p-6" style={{ background: 'var(--bg-primary)' }}>
+      <Script async src="https://js.stripe.com/v3/buy-button.js" />
       {/* Off-screen card for share image capture */}
       <div
         ref={shareCardRef}
@@ -579,6 +581,27 @@ export default function Results() {
             )}
           </div>
         )}
+
+        {/* Stripe Buy Button */}
+        <div className="rounded-3xl p-8 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
+          <div className="text-center mb-4">
+            <h2 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
+              {{ en: 'Support the project', ru: 'Поддержать проект', fr: 'Soutenir le projet' }[locale]}
+            </h2>
+            <p className="mt-2 text-base" style={{ color: 'var(--text-secondary)' }}>
+              {{
+                en: 'Buy a detailed breakdown of your results via Stripe.',
+                ru: 'Купите расширенный разбор результатов через Stripe.',
+                fr: 'Achetez une analyse détaillée de vos résultats via Stripe.',
+              }[locale]}
+            </p>
+          </div>
+          {/* @ts-expect-error Stripe custom element */}
+          <stripe-buy-button
+            buy-button-id="buy_btn_1TBY2wHmo60qmtibaCCCnrm3"
+            publishable-key="pk_live_51TBVjBHmo60qmtibJ9PkDqFH3ii93wyiUoH94j2nAWUqWqTn7nnG4NFHHwdcAn2ybvliOXeTgZ1R5NAasaiW6aZq00px7fwyES"
+          />
+        </div>
 
         {/* Find Hobbies Nearby */}
         <div className="rounded-3xl p-8 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
